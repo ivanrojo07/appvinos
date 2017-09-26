@@ -29,6 +29,15 @@ export class UsuarioServiceProvider {
 
     return this._http.post(this.url+'login',params,{headers:headers}).map(res=>res.json());
 
-}
+  }
+
+  addUsuario(usuario:Usuario){
+    let json = JSON.stringify(usuario);
+    let params = json;
+
+    let headers = new Headers({'Content-Type':'application/json'});
+
+    return this._http.post(this.url+'usuario',params,{headers:headers}).map(res=>res.json());
+  }
 
 }

@@ -4,15 +4,47 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header no-border>
 
-  <ion-navbar>
-    <ion-title>uvas</ion-title>
+  <ion-navbar transparent>
+    <ion-title></ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-slides pager>
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <img src="assets/img/tituloUvas.png" class="slide-image" />
+        </ion-card-header>
+        <ion-card-content>
+          <div>
+            <img src="assets/img/tipo1.png" alt="tipo1">
+            <img src="assets/img/tipo2.png" alt="tipo2">
+            <img src="assets/img/tipo3.png" alt="tipo3">
+            <img src="assets/img/tipo4.png" alt="tipo4">
+          </div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt diam metus, quis mollis ante efficitur id. Quisque
+          dolor ligula, commodo id nisl eget, iaculis tincidunt eros. Proin laoreet leo eu justo placerat ullamcorper. Sed
+          elementum tellus eu lacus sodales commodo. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+          per inceptos himenaeos. Vestibulum dolor ante, luctus ac ullamcorper ac, malesuada sed elit. Mauris nec risus sit
+          amet purus tincidunt iaculis vel id urna.
 
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide *ngFor="let slide of slides">
+      <ion-card class="ion-card">
+
+        <ion-card-content>
+          <img [src]="slide.image" class="slide-image" />
+          <h2 [innerHTML]="slide.title"></h2>
+          <p [innerHTML]="slide.description"></p>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

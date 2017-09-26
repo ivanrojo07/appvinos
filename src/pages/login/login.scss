@@ -1,5 +1,5 @@
 page-login {
-    .backgroud{
+    ion-content {
         padding-top: 40px;
         padding-bottom: 40px;
         background-image: url(../assets/img/fondo.jpg);
@@ -7,6 +7,11 @@ page-login {
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
-        background-color: #eee;
+        background-color: #fff;
+        background-position-x: 50%;
+      }
+      .bar-buttons,
+      .toolbar-title {
+        color: #fff;
       }
 }
