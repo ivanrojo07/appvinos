@@ -22,10 +22,12 @@ export class LoginPage implements OnInit{
 
   public errorMessage: string;
   public usuario: Usuario;
+  public pushPage: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private _usuarioService: UsuarioServiceProvider,
      public alertCtrl: AlertController) {
+       this.pushPage = "HomePage";
       this.usuario = new Usuario('','','','','','','');
   }
   
@@ -45,7 +47,7 @@ export class LoginPage implements OnInit{
         }
         else{
           this.alert('Bienvenido', 'Sessión exitosa');
-          this.ngOnInit();
+          this.navCtrl.push('PrincipalPage');
         }
         console.log(result.success);
       }

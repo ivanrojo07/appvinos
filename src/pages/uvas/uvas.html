@@ -6,9 +6,11 @@
 -->
 <ion-header no-border>
 
-  <ion-navbar transparent>
-    <ion-title></ion-title>
-  </ion-navbar>
+    <ion-navbar transparent>
+        <button ion-button menuToggle icon-only class="menu">
+          <ion-icon></ion-icon>
+        </button>
+    </ion-navbar>
 
 </ion-header>
 
@@ -22,22 +24,28 @@
         </ion-card-header>
         <ion-card-content>
           <div>
-            <img src="assets/img/tipo1.png" alt="tipo1">
-            <img src="assets/img/tipo2.png" alt="tipo2">
-            <img src="assets/img/tipo3.png" alt="tipo3">
-            <img src="assets/img/tipo4.png" alt="tipo4">
+            <img src="assets/img/tipo1.png" alt="tipo1" (click)="carrousel(1)">
+            <img src="assets/img/tipo2.png" alt="tipo2" (click)="carrousel(2)">
+            <img src="assets/img/tipo3.png" alt="tipo3" (click)="carrousel(3)">
+            <img src="assets/img/tipo4.png" alt="tipo4" (click)="carrousel(4)">
           </div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt diam metus, quis mollis ante efficitur id. Quisque
-          dolor ligula, commodo id nisl eget, iaculis tincidunt eros. Proin laoreet leo eu justo placerat ullamcorper. Sed
-          elementum tellus eu lacus sodales commodo. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-          per inceptos himenaeos. Vestibulum dolor ante, luctus ac ullamcorper ac, malesuada sed elit. Mauris nec risus sit
-          amet purus tincidunt iaculis vel id urna.
-
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt diam metus, quis mollis ante efficitur id. Quisque
+            dolor ligula, commodo id nisl eget, iaculis tincidunt eros. Proin laoreet leo eu justo placerat ullamcorper. Sed
+            elementum tellus eu lacus sodales commodo. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+            per inceptos himenaeos. Vestibulum dolor ante, luctus ac ullamcorper ac, malesuada sed elit.
+  
+          
+          
         </ion-card-content>
       </ion-card>
     </ion-slide>
-    <ion-slide *ngFor="let slide of slides">
-      <ion-card class="ion-card">
+    <ion-slide *ngFor="let slide of slides; let i=index">
+      <ion-card class="ion-card" id="i">
 
         <ion-card-content>
           <img [src]="slide.image" class="slide-image" />

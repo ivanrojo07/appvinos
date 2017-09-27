@@ -17,6 +17,20 @@ page-uvas {
   img {
     float: left;
     display: block !important;
+    margin: auto;
+    padding: 4px;
+
+}
+
+button.menu{
+  margin-top: 40px;
+  margin-left: -4px;
+  background: url(../assets/img/menu.png) repeat transparent;
+  background-size: 55%;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 50px;
+  color: #fff;
 }
   
 }
