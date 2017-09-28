@@ -16,7 +16,10 @@
 
 
 <ion-content fullscreen padding>
+  <ion-card>
   <ion-card-header>
+    Registrate:
+  </ion-card-header>
     <form #formRegister="ngForm" (ngSubmit)="onSubmit()">
       <ion-item>
         <ion-label floating>Nombre</ion-label>
@@ -57,5 +60,5 @@
         <button ion-button color="primary" type="submit" [disabled]="!formRegister.form.valid" block>Entrar</button>
       </div>
     </form>
-  </ion-card-header>
+  </ion-card>
 </ion-content>
