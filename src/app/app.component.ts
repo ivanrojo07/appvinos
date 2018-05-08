@@ -1,43 +1,137 @@
 import { Component, ViewChild } from '@angular/core';
+import { Config, Nav, Platform, MenuController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Config, Nav, Platform } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+
+    
+import { UsuarioServiceProvider } from '../providers/providers';
 
 
 import { FirstRunPage } from '../pages/pages';
+import { UserPage } from '../pages/user/user';
+import { AboutPage } from '../pages/about/about';
+import { NotificacionesPage } from '../pages/notificaciones/notificaciones';
+import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
+import { ProductoresPage } from '../pages/productores/productores';
+import { TutorialPage } from '../pages/tutorial/tutorial';
+import { UvasPage } from '../pages/uvas/uvas';
+import { SignupPage } from '../pages/signup/signup';
+import { LoginPage } from '../pages/login/login';
+import { PrivacidadPage } from '../pages/privacidad/privacidad';
+import { HomePage } from '../pages/home/home';
+
+export interface PageInterface{
+  title: string;
+  component: any;
+}
+
 @Component({
   templateUrl: 'app.html'
 })
+
 export class MyApp {
-  rootPage:any = FirstRunPage;
+  
 
   @ViewChild(Nav) nav: Nav;
 
-  pages: any[] = [
-    { title:'Login', component: 'LoginPage' },
-    { title:'Signup', component: 'SignupPage'},
-    { title:'¿Quiénes somos?', component: 'AboutPage'},
-    { title:'¿Cómo funciona?', component:'TutorialPage'},
-    { title:'Acerca de las uvas', component:'UvasPage'},
-    { title:'Disclaimer', component:'DisclaimerPage'},
-    { title:'Aviso de Privacidad', component:'PrivacidadPage'},
-    { title:'Productores', component:'ProductoresPage'},
-    { title:'Notificaciones', component:'NotificacionesPage'}
-  ]
+  loggedInPages: PageInterface[]=[
 
-  constructor(private platform: Platform,private statusBar: StatusBar,private splashScreen: SplashScreen) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
-      splashScreen.hide();
+    { title: "Home", component: UserPage  },
+    { title: "Acerca de nosotros", component: AboutPage },
+    { title: "Notificaciones", component: NotificacionesPage },
+    { title: "Disclaimer", component: DisclaimerPage},
+    { title: "Productores", component: ProductoresPage},
+    { title: "Tutorial", component: TutorialPage},
+    { title: "Sobre las Uvas", component: UvasPage},
+    { title: "Aviso de privacidad", component: PrivacidadPage}
+  ];
+
+  loggedOutPages: PageInterface[]=[
+    { title: "Home", component: FirstRunPage },
+    { title: "Registrate", component: SignupPage},
+    { title: "Inicia Sesión", component: LoginPage},
+    { title: "¿Quiénes somos?", component: AboutPage },
+    { title: "Notificaciones", component: NotificacionesPage },
+    { title: "Disclaimer", component: DisclaimerPage },
+    { title: "Productores", component: ProductoresPage },
+    { title: "¿Cómo Funciona?", component: TutorialPage },
+    { title: "Acerca de las Uvas", component: UvasPage },
+    { title: "Aviso de privacidad", component: PrivacidadPage }
+  ];
+
+  rootPage: any;
+  access_token: string = "";
+
+
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private storage: Storage,
+    private _usuarioService: UsuarioServiceProvider,
+    public menu: MenuController,
+    public events: Events,
+  ) {
+    this.initializeApp();
+    this.listenToLoginEvents();
+    this.storage.get("access_token").then((val)=>{
+      this.access_token = val;
+      if (this.access_token == null || this.access_token == "") {
+        this.rootPage = HomePage;
+        this.enableMenu(false);
+      } else {
+        this.rootPage = UserPage;
+
+        this._usuarioService.estaLogeado().then((hasLoggedIn)=>{
+          this.enableMenu(hasLoggedIn == true);
+          console.log("logeado");
+        });
+      }
+    });
+
+    
+  }
+
+  listenToLoginEvents(){
+    this.events.subscribe('user:login', ()=>{
+      console.log('eventLogin');
+      this.enableMenu(true);
+    });
+    this.events.subscribe('user:signup', ()=>{
+      this.enableMenu(true);
+    });
+    this.events.subscribe("user:logout", ()=>{
+      this.enableMenu(false);
     });
   }
 
-  openPage(page) {
+  enableMenu(loggedIn: boolean){
+    console.log("loggedIn"+loggedIn);
+    this.menu.enable(loggedIn, "loggedInMenu");
+    this.menu.enable(!loggedIn, "loggedOutMenu");
+  }
+
+  initializeApp(){
+    this.platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
+  }
+
+  openPage(page: PageInterface) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+
+
+  }
+
+  logout(){
+    this._usuarioService.logout();
+    this.rootPage = HomePage;
+    this.nav.setRoot(HomePage);
   }
 }
-
