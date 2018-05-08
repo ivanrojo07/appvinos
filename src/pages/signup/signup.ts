@@ -24,7 +24,7 @@ export class SignupPage {
   public confirm:boolean;
 
   constructor(public navCtrl: NavController,  private _usuarioService: UsuarioServiceProvider, public navParams: NavParams, public alertCtrl: AlertController) {
-    this.usuario = new Usuario('','','','','','','');
+    this.usuario = new Usuario(null,'','','','','','','');
     this.confirm_pass ='';
     this.confirm = false;
   }
@@ -38,7 +38,7 @@ export class SignupPage {
     if(this.usuario.password != this.confirm_pass){
       console.log("NO-coinciden");
       this.alert('Error','Las contraseñas introducidas no coinciden, vuelve a verificarlas');
-      this.usuario = new Usuario('','','','','','','');
+      this.usuario = new Usuario(null, '','','','','','','');
       this.confirm_pass ='';
     }
     else{

@@ -9,6 +9,19 @@ page-about {
         background-size: cover;
         background-color: #fff;
         background-position-x: 50%;
+        ion-slides{
+          div{
+            // padding: 0px 0px;
+            margin-top: -20px;
+           
+          }
+          .slide-image {
+            max-height: 50%;
+            max-width: 60%;
+            padding: 0;
+            margin: 40px 48px;
+        } 
+        }
       }
     .ion-card{
       background-color: white !important;
@@ -44,4 +57,16 @@ page-about {
           color: #2E1E1E;
         }
       }
+      button.menu{
+        margin-top: 40px;
+        margin-left: -4px;
+        background: url(../assets/img/menu.png) repeat transparent;
+        background-size: 55%;
+        background-repeat: no-repeat;
+        width: 25px;
+        height: 50px;
+        color: #fff;
+      }
+
+      
 }

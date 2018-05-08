@@ -19,6 +19,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 //providers
 import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-service';
+import { AboutPage } from '../pages/about/about';
+import { NotificacionesPage } from '../pages/notificaciones/notificaciones';
+import { DisclaimerPage } from '../pages/disclaimer/disclaimer';
+import { ProductoresPage } from '../pages/productores/productores';
+import { TutorialPage } from '../pages/tutorial/tutorial';
+import { PrivacidadPage } from '../pages/privacidad/privacidad';
+import { UvasPage } from '../pages/uvas/uvas';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,14 @@ import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-ser
     HomePage,
     SignupPage,
     LoginPage,
-    UserPage
+    UserPage,
+    AboutPage,
+    NotificacionesPage,
+    DisclaimerPage,
+    ProductoresPage,
+    TutorialPage,
+    UvasPage,
+    PrivacidadPage,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +57,13 @@ import { UsuarioServiceProvider } from '../providers/usuario-service/usuario-ser
     SignupPage,
     LoginPage,
     UserPage,
+    AboutPage,
+    NotificacionesPage,
+    DisclaimerPage,
+    ProductoresPage,
+    TutorialPage,
+    UvasPage,
+    PrivacidadPage,
     
   ],
   providers: [

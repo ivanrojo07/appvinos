@@ -32,13 +32,14 @@ export class UsuarioServiceProvider {
   ) {
     console.log('Hello UsuarioServiceProvider Provider');
     this.url = 'http://byw.from-tn.com/pwm/api/';
-    this.oauthUrl = 'localhost/dream_moto_backend/public/oauth/token';
+    this.oauthUrl = 'http://byw.from-tn.com/pwm/oauth/token';
 
   }
 
   login(usuario: Usuario){
     let json= JSON.stringify(usuario);
     let params = json;
+    console.log(params);
     let user = JSON.parse(params)
 
     let headers = new Headers({
@@ -48,11 +49,12 @@ export class UsuarioServiceProvider {
     let postData = {
       grant_type: "password",
       client_id: 2,
-      client_secret: "cco4KUfmpARV1txrK8eNazkc2BFs5IZuULOzI81y",
-      username: user.usuario.email,
-      password: user.usuario.password,
+      client_secret: "cco4KUfmpARVltxrK8eNazkc2BFs5IZuULOzI81y",
+      username: user.email,
+      password: user.password,
       scope: ""
     };
+    console.log(postData);
 
     return this._http.post(this.oauthUrl, JSON.stringify(postData), {
       headers: headers

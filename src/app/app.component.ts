@@ -48,11 +48,11 @@ export class MyApp {
   ];
 
   loggedOutPages: PageInterface[]=[
-    { title: "Home", component: FirstRunPage },
+    { title: "Home", component: HomePage },
     { title: "Registrate", component: SignupPage},
     { title: "Inicia Sesión", component: LoginPage},
     { title: "¿Quiénes somos?", component: AboutPage },
-    { title: "Notificaciones", component: NotificacionesPage },
+    // { title: "Notificaciones", component: NotificacionesPage },
     { title: "Disclaimer", component: DisclaimerPage },
     { title: "Productores", component: ProductoresPage },
     { title: "¿Cómo Funciona?", component: TutorialPage },
