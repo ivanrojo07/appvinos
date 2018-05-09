@@ -20,6 +20,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
 import { PrivacidadPage } from '../pages/privacidad/privacidad';
 import { HomePage } from '../pages/home/home';
+import { SettingPage } from '../pages/setting/setting';
 
 export interface PageInterface{
   title: string;
@@ -38,13 +39,14 @@ export class MyApp {
   loggedInPages: PageInterface[]=[
 
     { title: "Home", component: UserPage  },
+    { title: "Ajustes", component: SettingPage},
     { title: "Acerca de nosotros", component: AboutPage },
     { title: "Notificaciones", component: NotificacionesPage },
     { title: "Disclaimer", component: DisclaimerPage},
     { title: "Productores", component: ProductoresPage},
     { title: "Tutorial", component: TutorialPage},
     { title: "Sobre las Uvas", component: UvasPage},
-    { title: "Aviso de privacidad", component: PrivacidadPage}
+    { title: "Aviso de privacidad", component: PrivacidadPage},
   ];
 
   loggedOutPages: PageInterface[]=[

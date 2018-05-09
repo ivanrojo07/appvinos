@@ -25513,6 +25513,35 @@ page-productores .toolbar-title {
   color: #fff;
 }
 
+page-setting ion-content {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-image: url(../assets/img/fondo.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #fff;
+  background-position-x: 50%;
+}
+
+page-setting .bar-buttons,
+page-setting .toolbar-title {
+  color: #fff;
+  margin-top: -22px;
+}
+
+page-setting button.menu {
+  margin-top: 40px;
+  margin-left: -4px;
+  background: url(../assets/img/menu.png) repeat transparent;
+  background-size: 55%;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 50px;
+  color: #fff;
+}
+
 page-signup ion-content {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -25571,6 +25600,35 @@ page-tutorial .toolbar-title {
 }
 
 page-tutorial button.menu {
+  margin-top: 40px;
+  margin-left: -4px;
+  background: url(../assets/img/menu.png) repeat transparent;
+  background-size: 55%;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 50px;
+  color: #fff;
+}
+
+page-user ion-content {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-image: url(../assets/img/fondo.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #fff;
+  background-position-x: 50%;
+}
+
+page-user .bar-buttons,
+page-user .toolbar-title {
+  color: #fff;
+  margin-top: -22px;
+}
+
+page-user button.menu {
   margin-top: 40px;
   margin-left: -4px;
   background: url(../assets/img/menu.png) repeat transparent;

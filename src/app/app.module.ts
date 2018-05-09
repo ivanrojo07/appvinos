@@ -26,6 +26,7 @@ import { ProductoresPage } from '../pages/productores/productores';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { PrivacidadPage } from '../pages/privacidad/privacidad';
 import { UvasPage } from '../pages/uvas/uvas';
+import { SettingPage } from '../pages/setting/setting';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { UvasPage } from '../pages/uvas/uvas';
     TutorialPage,
     UvasPage,
     PrivacidadPage,
+    SettingPage
   ],
   imports: [
     BrowserModule,
@@ -64,6 +66,7 @@ import { UvasPage } from '../pages/uvas/uvas';
     TutorialPage,
     UvasPage,
     PrivacidadPage,
+    SettingPage
     
   ],
   providers: [
