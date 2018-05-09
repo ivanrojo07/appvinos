@@ -10,16 +10,7 @@
       <ion-icon md="md-menu" ios="ios-menu"></ion-icon>
       <!-- <ion-icon></ion-icon> -->
     </button>
-    <ion-title>{{ usuario.name+" "+usuario.appaterno+" "+usuario.apmaterno }} </ion-title>
-    <ion-buttons end>
-      <button ion-button clear end>
-        <ion-icon>
-          <img src="../../assets/imgs/dibujoarriba.png" alt="dream moto" width="25" height="25" />
-        </ion-icon>
-      </button>
-    </ion-buttons>
-
-
+    <ion-title>{{ usuario.nombre | titlecase }} {{ usuario.apaterno | titlecase }} {{ usuario.amaterno | titlecase }} </ion-title>
   </ion-navbar>
 </ion-header>
 

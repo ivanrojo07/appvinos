@@ -40,18 +40,20 @@ export class UserPage {
       else {
         // console.log(this.access_token);
         this._usuarioService.getUsuario(this.access_token).subscribe(result => {
+          console.log(result.name);
+          // this.usuario = new Usuario(result.id, result.name, result.appaterno, result.apmaterno, result.nacimiento, result.telefono, result.email, result.password);
           this.usuario.idusuario = result.id;
-          
           this.usuario.nombre = result.name;
           this.usuario.apaterno = result.appaterno;
           this.usuario.amaterno = result.apmaterno;
           this.usuario.email = result.email;
+          this.usuario.fechanac = result.nacimiento;
           this.usuario.telefono = result.telefono;
-          this.usuario.fechanac = result.fechanac;
+          this.usuario.password = result.password;
+          console.log("USUARIO" + JSON.stringify(this.usuario));
 
         });
       }
-      console.log("USUARIO" + this.usuario);
     });
 
   }
