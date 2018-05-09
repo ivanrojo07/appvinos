@@ -42,6 +42,12 @@
       </ion-item>
 
       <ion-item>
+        <ion-label floating>Número movil</ion-label>
+        <ion-input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="usuario.telefono" required autofocus></ion-input>
+      </ion-item>
+
+
+      <ion-item>
         <ion-label floating>Correo Electronico</ion-label>
         <ion-input type="email" name="email" #email="ngModel" [(ngModel)]="usuario.email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z_-]{3,}([.]{1}[a-zA-Z_-]{2,}|[.]{1}[a-zA-Z_-]{2,}[.]{1}[a-zA-Z_-]{2,})" required></ion-input>
       </ion-item>
