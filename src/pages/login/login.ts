@@ -8,6 +8,7 @@ import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
 import { UserPage } from '../user/user';
 
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -44,14 +45,14 @@ export class LoginPage implements OnInit{
   }
   public onSubmit(){
     // console.log(this.usuario);
-    console.log(this.usuario);
+    // console.log(this.usuario);
     this._usuarioService.login(this.usuario).subscribe(result=>{
       if(!result){
         this.alert('Error', 'Problemas con el servidor. Contacte con su administrador de red.');
       }
       else {
         if(result.failed){
-          this.alert('Error', result.failed);
+          this.alert('Error result ', result.failed);
           this.ngOnInit();
         }
         else{
@@ -65,14 +66,14 @@ export class LoginPage implements OnInit{
         }
       }
     },
-      error => {
-        this.errorMessage = error;
-        if (this.errorMessage != null) {
-          console.log(this.errorMessage);
-          this.alert('Error', 'Problemas con el servidor');
-        }
-
-      });
+    err=>{
+     let error = JSON.parse(JSON.stringify(err));
+     let errorMessage = JSON.parse(error._body);
+     
+      console.log("Error: "+ JSON.stringify(error));
+      console.log("ErrorMessage: "+ JSON.stringify(errorMessage));
+      this.alert("Error:", errorMessage.message);
+    });
   }
 
   public alert(titulo:string, contenido:string ){

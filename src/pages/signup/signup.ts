@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 // import { Params} from '@angular/router';
 import { Usuario } from '../../models/usuario';
 import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
+import { HomePage } from '../home/home';
 /**
  * Generated class for the SignupPage page.
  *
@@ -44,7 +45,7 @@ export class SignupPage {
     else{
       // console.log("entra al else, coincide");
       if (this.usuario.password == this.confirm_pass){
-        this.alert('Success', "coinciden contraseñas"+this.usuario.nombre);
+        // this.alert('Success', "coinciden contraseñas"+this.usuario.nombre);
         this._usuarioService.addUsuario(this.usuario).subscribe(
           result=>{
             if (!result.usuario) {
@@ -56,18 +57,21 @@ export class SignupPage {
                 
                 this.usuario = result.usuario;
                 this.alert("Success", "Usuario creado correctamente. Por favor "+this.usuario.nombre+" "+this.usuario.apaterno+" introduce tus credenciales.");
-                this.navCtrl.setRoot('HomePage');
+                this.navCtrl.setRoot(HomePage);
               }
               else{
-                console.log(result);
+                console.log("Result "+result);
               }
             }
           },
-        error=>{
-          this.errorMessage = <any>error;
-          if (this.errorMessage !=null) {
-            console.log(this.errorMessage);
-            this.alert('Error', 'Problemas con el servidor');
+        err=>{
+          let error = JSON.parse(JSON.stringify(err));
+          let errorMessage = JSON.parse(error._body);
+          if (errorMessage !=null) {
+            // let errorEmail = JSON.parse(errorMessage.email);
+            console.log("Error "+ JSON.stringify(errorMessage));
+            this.alert('Error', errorMessage.errors.email);
+            
           }
         });
 
