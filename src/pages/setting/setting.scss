@@ -9,7 +9,17 @@ page-setting {
         background-size: cover;
         background-color: #fff;
         background-position-x: 50%;
+        ion-list {
+          button.item {
+            background-color: rgba(137, 27, 95, 0.863) !important;
+            background-position-x: 50%;
+            ion-label {
+              color: #fff !important;
+            }
+          }
+        }
     }
+    
     .bar-buttons,
       .toolbar-title {
         color: #fff;
@@ -25,4 +35,5 @@ page-setting {
         height: 50px;
         color: #fff;
       }
+      
 }

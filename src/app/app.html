@@ -9,7 +9,7 @@
 
   <ion-content>
     <ion-list>
-      <button ion-item menuClose *ngFor="let p of loggedOutPages" (click)="openPage(p)">
+      <button id="transparent" ion-item menuClose *ngFor="let p of loggedOutPages" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>

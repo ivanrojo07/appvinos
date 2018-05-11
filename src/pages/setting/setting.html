@@ -16,5 +16,12 @@
 
 
 <ion-content fullscreen padding>
-
+  <ion-card>
+    <ion-list>
+      <button ion-item *ngFor="let p of SettingPages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+    
+  </ion-card>
 </ion-content>

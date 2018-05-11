@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ContrasenaPage } from '../contrasena/contrasena';
+import { TarjetaPage } from '../tarjeta/tarjeta';
 
 /**
  * Generated class for the SettingPage page.
@@ -21,8 +23,8 @@ export interface PageInterface{
 export class SettingPage {
 
  SettingPages: PageInterface[]=[
-  { title: "Cambiar Contraseña", component: ""},
-  { title: "Tarjetas", component: ""}  
+  { title: "Cambiar Contraseña", component: ContrasenaPage},
+  { title: "Tarjetas", component: TarjetaPage}  
  ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -30,6 +32,10 @@ export class SettingPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingPage');
+  }
+
+  openPage(page: PageInterface){
+    this.navCtrl.push(page.component);
   }
 
 }
