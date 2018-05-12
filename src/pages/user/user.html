@@ -5,9 +5,9 @@
   Ionic pages and navigation.
 -->
 <ion-header no-border>
-  <ion-navbar>
+  <ion-navbar transparent>
     <button ion-button menuToggle icon-only class="menu">
-      <ion-icon md="md-menu" ios="ios-menu"></ion-icon>
+      <ion-icon></ion-icon>
       <!-- <ion-icon></ion-icon> -->
     </button>
     <ion-title>{{ usuario.nombre | titlecase }} {{ usuario.apaterno | titlecase }} {{ usuario.amaterno | titlecase }} </ion-title>
@@ -15,7 +15,7 @@
 </ion-header>
 
 
-<ion-content scroll="false" class="backgroud">
+<ion-content fullscreen padding>
   <div class="splash-bg"></div>
 
 </ion-content>

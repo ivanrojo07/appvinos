@@ -16,16 +16,27 @@
 // automatically applied to the <body> element in the app.
 ion-app{
     ion-content {
-        padding-top: 40px;
-        padding-bottom: 40px;
-        background-image: url(../assets/img/fondomenu.jpg);
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        background-color: #fff;
-        background-position-x: 50%;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-image: url(../assets/img/fondomenu.jpg);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: #fff;
+      background-position-x: 50%;
+      ion-list {
+        button.item {
+          background-color: transparent !important;
+          background-position-x: 50%;
+          ion-label {
+            color: #fff !important;
+          }
+        }
+       
       }
+    }
+      
       .toolbar-background {
         background-color: rgba(73, 50, 47, 0.842)
       }
@@ -34,13 +45,5 @@ ion-app{
         color: rgb(255, 255, 255);
       }
 
-      ion-list {
-        button {
-          background-color: transparent !important;
-          background-position-x: 50%;
-          ion-label {
-            color: #fff !important;
-          }
-        }
-      }
+      
 }

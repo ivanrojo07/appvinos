@@ -9,6 +9,7 @@ import { Storage } from '@ionic/storage';
 import { Events } from 'ionic-angular';
 
 
+
 /*
   Generated class for the UsuarioServiceProvider provider.
 
@@ -21,15 +22,19 @@ export class UsuarioServiceProvider {
   public url: string;
   public oauthUrl: string;
   public usuario: Usuario;
+  public var_token:any;
 
   HAS_LOGGED_IN = "hasLoggedIn";
   
 
   constructor(
     public _http: Http,
-    public storage:Storage,
+    private storage:Storage,
     public events: Events,
   ) {
+    this.storage.get("access_token").then((val)=>{
+      this.var_token = JSON.parse(val);
+    });
     console.log('Hello UsuarioServiceProvider Provider');
     this.url = 'http://byw.from-tn.com/pwm/api/';
     this.oauthUrl = 'http://byw.from-tn.com/pwm/oauth/token';
@@ -101,6 +106,19 @@ export class UsuarioServiceProvider {
     this.storage.remove("access_token");
     this.storage.remove("refresh_token");
     this.events.publish("user:logout");
+  }
+  
+  changePass(params:any){
+    let json = JSON.stringify(params);
+    console.log(this.var_token);
+    let headers = new Headers({
+      "Content-Type" : "application/json",
+      "Accept" : "application/json",
+      "Authorization" : "Bearer "+this.var_token,
+    });
+    console.log(headers);
+    console.log(params);
+    return this._http.post(this.url+"password",json,{headers:headers}).map(res=>res.json());
   }
 
 }
