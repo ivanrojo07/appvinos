@@ -29,6 +29,9 @@ import { UvasPage } from '../pages/uvas/uvas';
 import { SettingPage } from '../pages/setting/setting';
 import { ContrasenaPage } from '../pages/contrasena/contrasena';
 import { TarjetaPage } from '../pages/tarjeta/tarjeta';
+import { TarjetaProvider } from '../providers/tarjeta/tarjeta';
+import { DomicilioFiscalProvider } from '../providers/domicilio-fiscal/domicilio-fiscal';
+import { DomicilioEnvioProvider } from '../providers/domicilio-envio/domicilio-envio';
 
 @NgModule({
   declarations: [
@@ -80,6 +83,9 @@ import { TarjetaPage } from '../pages/tarjeta/tarjeta';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsuarioServiceProvider,
+    TarjetaProvider,
+    DomicilioFiscalProvider,
+    DomicilioEnvioProvider,
     
   ]
 })

@@ -24,6 +24,8 @@ export class SettingPage {
 
  SettingPages: PageInterface[]=[
   { title: "Cambiar Contraseña", component: ContrasenaPage},
+  { title: "Domicilio Fiscal", component:"todo" },
+  { title: "Domicilio de entrega", component:"todo"},
   { title: "Tarjetas", component: TarjetaPage}  
  ];
 
