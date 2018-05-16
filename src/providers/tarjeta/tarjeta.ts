@@ -38,6 +38,17 @@ export class TarjetaProvider {
     return this.http.get(this.url,{ headers : headers }).map(res=>res.json());
   }
 
+  setTarjeta(token, formulario){
+    let params = formulario;
+    let headers = new Headers({
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Authorization": "Bearer "+token
+    });
+    console.log(headers);
+    return this.http.post(this.url,params,{headers:headers}).map(res=>res.json());
+  }
+
 
 
 }

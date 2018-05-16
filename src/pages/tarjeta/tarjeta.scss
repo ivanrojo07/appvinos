@@ -1,3 +1,45 @@
 page-tarjeta {
-
+    ion-content {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-image: url(../assets/img/fondo.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-color: #fff;
+        background-position-x: 50%;
+        ion-list {
+          border: 1px solid black;
+          button.item {
+            background-color: rgba(137, 27, 95, 0.863) !important;
+            background-position-x: 50%;
+            border-style: solid;
+            border-top-width: thin;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            ion-label {
+              color: #fff !important;
+            }
+          }
+        }
+    }
+    .bar-button{
+        color: #fff;
+    }
+    .bar-buttons,
+      .toolbar-title {
+        color: #fff;
+        // margin-top: -22px;
+      }
+      button.menu{
+        margin-top: 40px;
+        margin-left: -4px;
+        background: url(../assets/img/menu.png) repeat transparent;
+        background-size: 55%;
+        background-repeat: no-repeat;
+        width: 25px;
+        height: 50px;
+        color: #fff;
+      }
 }

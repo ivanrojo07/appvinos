@@ -7,12 +7,38 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>TarjetaPage</ion-title>
+    <ion-title>Tarjetas</ion-title>
+    <ion-buttons end>
+      <button ion-button color="light" round icon-end icon-only end (click)="openForm()">
+        <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
+<ion-content padding *ngIf="messageError">
+<ion-card >
+  <ion-card-content>
+    <ion-card-title>
+      Tarjetas
+      </ion-card-title>
+    <p>
+      {{ messageError.message }}
+    </p>
+  </ion-card-content>
+</ion-card>
 
 </ion-content>
+<ion-content padding *ngIf="!messageError">
+  <ion-card  *ngFor="let tarjeta of tarjetas">
+    <ion-card-content>
+      <ion-card-title>
+        Tarjeta {{tarjeta.id}}
+        </ion-card-title>
+      <p>
+        {{tarjeta.tipo}}
+      </p>
+    </ion-card-content>
+  </ion-card>
+  
+  </ion-content>

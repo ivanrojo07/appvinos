@@ -21,6 +21,7 @@ import { LoginPage } from '../pages/login/login';
 import { PrivacidadPage } from '../pages/privacidad/privacidad';
 import { HomePage } from '../pages/home/home';
 import { SettingPage } from '../pages/setting/setting';
+import { TarjetaPage } from '../pages/tarjeta/tarjeta';
 
 export interface PageInterface{
   title: string;

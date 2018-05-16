@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Tarjeta } from '../../models/tarjeta';
 import { TarjetaProvider } from '../../providers/providers';
 import { Storage } from '@ionic/storage';
+import { TarjetaFormPage } from '../tarjeta-form/tarjeta-form';
 
 /**
  * Generated class for the TarjetaPage page.
@@ -17,9 +18,10 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'tarjeta.html',
   providers: [TarjetaProvider],
 })
-export class TarjetaPage {
+export class TarjetaPage implements OnInit {
 
-  public tarjetas: Array<Tarjeta>;
+  public tarjetas: Tarjeta[];
+  public messageError: any;
   // public tarjeta: Tarjeta;
 
 
@@ -33,20 +35,33 @@ export class TarjetaPage {
   }
 
   ngOnInit(){
+    this.showTarjetas();
+  }
+  
+  showTarjetas(){
     this.storage.get("access_token").then((val)=>{
       let token = JSON.parse(val);
       this.tarjetaProvider.getTarjetas(token).subscribe(result => {
         console.log(result);
-        this.tarjetas = [];
+        this.tarjetas = result.tarjetas;
+        console.log(this.tarjetas);
       },
         error => {
-          console.log("Error " + JSON.stringify(error));
+          this.messageError = JSON.parse(error._body)
+          console.log("Error " + JSON.stringify(this.messageError));
+          
         });
     });
-
-    
   }
-
+  
+  openForm(){
+    console.log("abre formulario");
+    this.navCtrl.push(TarjetaFormPage);
+  }
+  ionViewWillEnter(){
+    console.log("hola tarjeta");
+    this.ngOnInit();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TarjetaPage');
   }
