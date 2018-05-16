@@ -10,9 +10,14 @@ page-setting {
         background-color: #fff;
         background-position-x: 50%;
         ion-list {
+          border: 1px solid black;
           button.item {
             background-color: rgba(137, 27, 95, 0.863) !important;
             background-position-x: 50%;
+            border-style: solid;
+            border-top-width: thin;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
             ion-label {
               color: #fff !important;
             }

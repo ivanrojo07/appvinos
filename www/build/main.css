@@ -27835,9 +27835,17 @@ page-setting ion-content {
   background-position-x: 50%;
 }
 
+page-setting ion-content ion-list {
+  border: 1px solid black;
+}
+
 page-setting ion-content ion-list button.item {
   background-color: rgba(137, 27, 95, 0.863) !important;
   background-position-x: 50%;
+  border-style: solid;
+  border-top-width: thin;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 page-setting ion-content ion-list button.item ion-label {
