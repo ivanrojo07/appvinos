@@ -17,25 +17,22 @@ export class TarjetaProvider {
 
   public url: string;
   public tarjeta: Tarjeta;
-  public var_token:any;
+
   constructor(
     public http: Http,
-    private storage:Storage,
   ) {
-    this.storage.get("access_token").then((val)=>{
-      this.var_token = JSON.parse(val);
-    });
+    
     // console.log(this.authorization);
     console.log('Hello TarjetaProvider Provider');
     this.url = 'http://byw.from-tn.com/pwm/api/cards';
   }
 
-  getTarjetas(){
-    console.log(this.var_token);
+  getTarjetas(token){
+    console.log(token);
     let headers = new Headers({
       "Content-Type" : "application/json",
       "Accept" : "application/json",
-      "Authorization" : "Bearer "+this.var_token
+      "Authorization" : "Bearer "+token
     });
     console.log(headers);
     return this.http.get(this.url,{ headers : headers }).map(res=>res.json());

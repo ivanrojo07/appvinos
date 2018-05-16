@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Tarjeta } from '../../models/tarjeta';
 import { TarjetaProvider } from '../../providers/providers';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the TarjetaPage page.
@@ -25,19 +26,25 @@ export class TarjetaPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private tarjetaProvider: TarjetaProvider
+    private tarjetaProvider: TarjetaProvider,
+    public storage:Storage,
   ) {
     this.tarjetas = [];
   }
 
   ngOnInit(){
-    this.tarjetaProvider.getTarjetas().subscribe(result=>{
-      console.log(result);
-      this.tarjetas = [ ];
-    },
-    error=>{
-      console.log("Error "+JSON.stringify(error));
+    this.storage.get("access_token").then((val)=>{
+      let token = JSON.parse(val);
+      this.tarjetaProvider.getTarjetas(token).subscribe(result => {
+        console.log(result);
+        this.tarjetas = [];
+      },
+        error => {
+          console.log("Error " + JSON.stringify(error));
+        });
     });
+
+    
   }
 
   ionViewDidLoad() {

@@ -32,9 +32,11 @@ export class UsuarioServiceProvider {
     private storage:Storage,
     public events: Events,
   ) {
-    this.storage.get("access_token").then((val)=>{
+    this.storage.get('access_token').then((val)=>{
       this.var_token = JSON.parse(val);
+      
     });
+    console.log(this.var_token);
     console.log('Hello UsuarioServiceProvider Provider');
     this.url = 'http://byw.from-tn.com/pwm/api/';
     this.oauthUrl = 'http://byw.from-tn.com/pwm/oauth/token';
@@ -109,8 +111,8 @@ export class UsuarioServiceProvider {
   }
   
   changePass(params:any){
-    let json = JSON.stringify(params);
     console.log(this.var_token);
+    let json = JSON.stringify(params);
     let headers = new Headers({
       "Content-Type" : "application/json",
       "Accept" : "application/json",
