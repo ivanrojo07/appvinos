@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Tarjeta } from '../../models/tarjeta';
 import { TarjetaProvider } from '../../providers/providers';
 import { Storage } from '@ionic/storage';
@@ -30,6 +30,7 @@ export class TarjetaPage implements OnInit {
     public navParams: NavParams,
     private tarjetaProvider: TarjetaProvider,
     public storage:Storage,
+    public alertCtrl: AlertController,
   ) {
     this.tarjetas = [];
   }
@@ -58,6 +59,44 @@ export class TarjetaPage implements OnInit {
     console.log("abre formulario");
     this.navCtrl.push(TarjetaFormPage);
   }
+
+  eliminarTarjeta(id){
+    let alert = this.alertCtrl.create({
+      title: 'Deseas eliminar esta tarjeta',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: data => {
+            console.log(data);
+            this.storage.get("access_token").then((val)=>{
+              let token = JSON.parse(val);
+              console.log(token);
+              this.tarjetaProvider.deleteTarjeta(token,id).subscribe(result => {
+                console.log(result);
+                // this.tarjetas = result.tarjetas;
+                // console.log(this.tarjetas);
+                this.ionViewWillEnter();
+              },
+                error => {
+                  this.messageError = JSON.parse(error._body)
+                  console.log("Error " + JSON.stringify(this.messageError));
+                  
+                });
+            });
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
   ionViewWillEnter(){
     console.log("hola tarjeta");
     this.ngOnInit();
@@ -65,5 +104,6 @@ export class TarjetaPage implements OnInit {
   ionViewDidLoad() {
     console.log('ionViewDidLoad TarjetaPage');
   }
+
 
 }

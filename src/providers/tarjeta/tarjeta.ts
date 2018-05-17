@@ -49,6 +49,21 @@ export class TarjetaProvider {
     return this.http.post(this.url,params,{headers:headers}).map(res=>res.json());
   }
 
+  deleteTarjeta(token, tarjeta_id){
+    let params = {
+      "_method":"DELETE",
+
+    };
+    console.log(params)
+    let headers = new Headers({
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Authorization": "Bearer "+token
+    });
+    console.log(headers);
+    return this.http.post(this.url+"/"+tarjeta_id,params,{headers:headers}).map(res=>res.json());
+  }
+
 
 
 }
