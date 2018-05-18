@@ -16,6 +16,8 @@
 <ion-content padding>
   <ion-list>
     <form action="ngSubmit" #formDirfiscal="ngForm" (ngSubmit)="onSubmit(formDirfiscal)">
+      
+      <ion-input *ngIf="edit == true" type="hidden" name="_method" ngModel="PUT" #_method="ngModel" required></ion-input>
         <ion-item>
           <ion-input type="text" name="pais" ngModel="{{ domicilio.pais }}" #pais="ngModel" placeholder="Pais"  required></ion-input>
         </ion-item>

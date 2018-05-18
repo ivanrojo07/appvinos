@@ -40,4 +40,14 @@ export class DomicilioFiscalProvider {
     return this.http.post(this.url,params,{headers:headers}).map(res=>res.json());
   }
 
+  updateDomicilio(token,form,domfiscal_id){
+    let domicilio_id = domfiscal_id;
+    let params = form;
+    let headers = new Headers({
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Authorization": "Bearer " + token
+    });
+    return this.http.post(this.url+'/'+domicilio_id,params,{headers:headers}).map(res=>res.json());
+  }
 }
