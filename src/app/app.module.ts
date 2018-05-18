@@ -36,6 +36,7 @@ import { TarjetaFormPage } from '../pages/tarjeta-form/tarjeta-form';
 import { DomicilioFiscalPage } from '../pages/domicilio-fiscal/domicilio-fiscal';
 import { DomicilioEnvioPage } from '../pages/domicilio-envio/domicilio-envio';
 import { DomfiscalFormPage } from '../pages/domfiscal-form/domfiscal-form';
+import { DomenvioFormPage } from '../pages/domenvio-form/domenvio-form';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { DomfiscalFormPage } from '../pages/domfiscal-form/domfiscal-form';
     DomicilioFiscalPage,
     DomfiscalFormPage,
     DomicilioEnvioPage,
+    DomenvioFormPage,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +90,7 @@ import { DomfiscalFormPage } from '../pages/domfiscal-form/domfiscal-form';
     DomicilioFiscalPage,
     DomfiscalFormPage,
     DomicilioEnvioPage,
+    DomenvioFormPage,
     
   ],
   providers: [
