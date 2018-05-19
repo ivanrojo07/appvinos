@@ -51,6 +51,15 @@ export class DomicilioEnvioPage implements OnInit{
 
   showDireccion(id){
 
+    this.storage.get("access_token").then((val)=>{
+      let token = JSON.parse(val);
+      this.direccionProvider.getDomicilio(token,id).subscribe(result=>{
+        console.log(result);
+        this.alertPresentacion(result.domicilio);
+      },error=>{
+
+      });
+    });
   }
 
   openForm(){
@@ -107,6 +116,53 @@ export class DomicilioEnvioPage implements OnInit{
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DomicilioEnvioPage');
+  }
+
+  alertPresentacion(direccion){
+    let alert = this.alertCtrl.create({
+      title: 'Domicilio',
+      message: `<ion-card *ngFor="let direccion of domicilios; let i = index">
+    <ion-card-content>
+      <p>
+        <strong>Pais: ${direccion.pais}</strong>  
+      </p>
+      <p>
+        <strong>Estado: ${direccion.estado}</strong> 
+      </p>
+      <p>
+        <strong>Ciudad: ${direccion.ciudad}</strong> 
+      </p>
+      <p>
+        <strong>Municipio: ${direccion.municipio}</strong> 
+      </p>
+      <p>
+        <strong>Calle: ${direccion.calle}</strong> 
+      </p>
+      <p>
+        <strong>Número exterior: ${direccion.numext}</strong> 
+      </p>
+      <p>
+        <strong>Número interior: ${direccion.numint}</strong> 
+      </p>
+      <p>
+        <strong>Colonia: ${direccion.colonia}</strong>  
+      </p>
+      <p>
+        <strong>Entre : ${direccion.entre1}</strong> 
+      </p>
+      <p>
+        <strong>Y : ${direccion.entre2}</strong> 
+      </p>
+      <p>
+        <strong>Referencia: ${direccion.referencia}</strong> 
+      </p>
+      
+    </ion-card-content>
+
+  </ion-card>`,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }
