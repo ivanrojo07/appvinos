@@ -18,18 +18,27 @@ export class AboutPage {
   slides = [
     {
       title: "",
-      description: "In volutpat luctus urna, sit amet scelerisque mauris tincidunt eu. Phasellus est arcu, posuere in lectus ut, tristique viverra justo. Morbi cursus quis purus ac ullamcorper. Nam vitae consectetur felis. Sed bibendum risus eget leo fringilla, eget sagittis mi congue. Donec bibendum mi eu augue accumsan, mattis vulputate magna luctus. Praesent vel interdum sem. Phasellus diam nunc, vehicula vel est quis, feugiat facilisis mauris. Morbi ut mauris nec diam maximus sagittis. Praesent dapibus posuere vehicula.",
+      description: "<strong>PWM®️</strong> (<strong>Premium Wine Makers®️</strong>), es un proyecto para ofertar cómodamente desde un celular, Tablet o computadora vino mexicano por mandato de producción, a precios prefereciales con tendencia a gusto personal de nuestros clientes con la mas alta calidad en producción de vino.",
       image: "assets/img/titulo.png",
+      footerimage:"assets/img/logo512.PNG"
     },
     {
       title: "",
-      description: "In id tempus nisi, eget dignissim urna. Nunc efficitur, sem non bibendum faucibus, nisl lectus facilisis odio, a cursus purus elit eget lacus. Aliquam enim turpis, feugiat vitae euismod sit amet, ullamcorper eu ipsum. Sed nec arcu gravida, accumsan urna a, eleifend diam. Aenean lobortis bibendum justo, ut vehicula metus. Duis dictum auctor arcu, eu elementum sapien viverra hendrerit. Cras fringilla lectus eros, id porttitor diam sollicitudin ut. Cras vel lectus dolor.",
+      description: "Nuestra intervención se basa en:  la selección de uva, terrua, procesos, equipos de vinificación,  embarricado, embotellado y productores profesionales asesores o titulares.<br><br>",
       image: "",
+      footerimage:"assets/img/botellas.jpeg"
     },
     {
       title: "",
-      description: "Praesent quis sapien et eros tincidunt finibus. Sed vitae quam hendrerit, dignissim augue eget, gravida neque. Suspendisse magna lacus, tincidunt sit amet aliquam at, luctus id odio. Pellentesque non tempor odio. Nulla dictum mauris nec sapien rhoncus, vel ornare ipsum fringilla. Proin efficitur libero at varius aliquam. Praesent commodo felis sed sagittis varius. Donec bibendum, mi eu tristique cursus, metus justo tempus ante, sed malesuada elit ante id justo. Donec sed blandit orci. In nunc orci, fringilla eu pharetra sed, sagittis tristique nisi. Ut scelerisque elementum est, eu dictum massa sollicitudin sit amet. Pellentesque consequat pulvinar imperdiet. Curabitur ornare erat eget risus vehicula tempus.",
+      description: "La plataforma de venta PWM efectura reporte detallado de cada paso de la  producción , referencias de la uva, reconocimiento de los enólogos, wine makers y bodegas.<br><br>La entrega de nuestros vinos es de categoría Premium y personalizada.<br><br>",
       image: "",
+      footerimage:"assets/img/barricas.jpeg"
+    },
+    {
+      title: "",
+      description: `Compartimos y entregamos a todos nuestros amigos, familia y clientes la pasión de producir vino mexicano creando  <strong>la  mejor experiencia de tomar vino en cada botella</strong>.<br><br><strong>“once in a time life wine experiencie”</strong><br><br>`,
+      image: "",
+      footerimage:"assets/img/sobremesa.jpeg"
     }
   ];
 
