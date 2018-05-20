@@ -35,6 +35,16 @@ export class DomfiscalFormPage {
       this.domicilio = navParams.get("domicilio");
     } else {
       this.edit = false;
+      this.domicilio = {
+        pais: "",
+        estado: "",
+        municipio: "",
+        ciudad: "",
+        colonia: "",
+        calle: "",
+        numext: "",
+        numint: "",
+      };
     }
     console.log(this.edit);
   }

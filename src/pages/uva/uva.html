@@ -1,0 +1,72 @@
+<!--
+  Generated template for the UvaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{uva.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-slides pager>
+
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <strong>Al olfato</strong>
+        </ion-card-header>
+        <ion-card-content style="text-align: justify !important;">
+          {{uva.olfato}}
+          <!-- El ngIf es porque la descripción de Syrah es demasiado larga y se corta la imagen -->
+          <img *ngIf="uva.title != 'Syrah'" src="assets/img/olfato.jpeg" alt="">
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <strong>Al gusto</strong>
+        </ion-card-header>
+        <ion-card-content style="text-align: justify !important;">
+          {{uva.gusto}}
+          <!-- El ngIf es porque la descripción de Syrah es demasiado larga y se corta la imagen -->
+          <img *ngIf="uva.title != 'Syrah'" src="assets/img/gusto.jpeg" alt="">
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <strong>A la vista</strong>
+        </ion-card-header>
+        <ion-card-content style="text-align: justify !important;">
+          {{uva.vista}}
+          <img src="assets/img/vista.jpg" alt="">
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <strong>Maridaje</strong>
+        </ion-card-header>
+        <ion-card-content style="text-align: justify !important;">
+          {{uva.maridaje}}
+          <img src="assets/img/maridaje.jpeg" alt="">
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-content>

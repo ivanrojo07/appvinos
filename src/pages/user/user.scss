@@ -9,7 +9,14 @@ page-user {
         background-size: cover;
         background-color: #fff;
         background-position-x: 50%;
-    }
+        
+      }
+      
+      .justified {
+        text-align: justify !important;
+        text-justify: inter-word !important;
+      }
+    
     .bar-buttons,
       .toolbar-title {
         color: #fff;

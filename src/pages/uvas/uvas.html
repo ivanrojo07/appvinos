@@ -15,44 +15,13 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-slides pager>
-    <ion-slide>
-      <ion-card>
-        <ion-card-header>
-          <img src="assets/img/tituloUvas.png" class="slide-image" />
-        </ion-card-header>
-        <ion-card-content>
-          <div>
-            <img src="assets/img/tipo1.png" alt="tipo1" (click)="carrousel(1)">
-            <img src="assets/img/tipo2.png" alt="tipo2" (click)="carrousel(2)">
-            <img src="assets/img/tipo3.png" alt="tipo3" (click)="carrousel(3)">
-            <img src="assets/img/tipo4.png" alt="tipo4" (click)="carrousel(4)">
-          </div>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt diam metus, quis mollis ante efficitur id. Quisque
-            dolor ligula, commodo id nisl eget, iaculis tincidunt eros. Proin laoreet leo eu justo placerat ullamcorper. Sed
-            elementum tellus eu lacus sodales commodo. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-            per inceptos himenaeos. 
-  
-          
-          
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>
-    <ion-slide *ngFor="let slide of slides; let i=index">
-      <ion-card class="ion-card" id="i">
+<ion-content fullscreen padding class="card-background-page" style="margin-top: 0px !important;">
 
-        <ion-card-content>
-          <img [src]="slide.image" class="slide-image" />
-          <h2 [innerHTML]="slide.title"></h2>
-          <p [innerHTML]="slide.description"></p>
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>
-  </ion-slides>
+
+  <ion-card *ngFor="let tarjeta of tarjetas" (click)="openUva(tarjeta)">
+    <img [src]="tarjeta.image" alt="">
+    <div class="card-title">{{tarjeta.title}}</div>
+    <div class="card-subtitle">{{tarjeta.subtitle}}</div>
+  </ion-card>
+  
 </ion-content>
