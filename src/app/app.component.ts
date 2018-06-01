@@ -8,7 +8,7 @@ import { Storage } from '@ionic/storage';
 import { UsuarioServiceProvider } from '../providers/providers';
 
 
-import { FirstRunPage } from '../pages/pages';
+// import { FirstRunPage } from '../pages/pages';
 import { UserPage } from '../pages/user/user';
 import { AboutPage } from '../pages/about/about';
 import { NotificacionesPage } from '../pages/notificaciones/notificaciones';
@@ -21,7 +21,7 @@ import { LoginPage } from '../pages/login/login';
 import { PrivacidadPage } from '../pages/privacidad/privacidad';
 import { HomePage } from '../pages/home/home';
 import { SettingPage } from '../pages/setting/setting';
-import { TarjetaPage } from '../pages/tarjeta/tarjeta';
+import { BarricasPage } from '../pages/barricas/barricas';
 
 export interface PageInterface{
   title: string;
@@ -47,6 +47,7 @@ export class MyApp {
     { title: "Productores", component: ProductoresPage},
     { title: "Tutorial", component: TutorialPage},
     { title: "Sobre las Uvas", component: UvasPage},
+    { title: "Sobre las barrica", component: BarricasPage },
     { title: "Aviso de privacidad", component: PrivacidadPage},
   ];
 
@@ -60,6 +61,7 @@ export class MyApp {
     { title: "Productores", component: ProductoresPage },
     { title: "¿Cómo Funciona?", component: TutorialPage },
     { title: "Acerca de las Uvas", component: UvasPage },
+    { title: "Sobre las barrica", component: BarricasPage },
     { title: "Aviso de privacidad", component: PrivacidadPage }
   ];
 

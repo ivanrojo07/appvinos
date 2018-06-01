@@ -38,6 +38,7 @@ import { DomicilioEnvioPage } from '../pages/domicilio-envio/domicilio-envio';
 import { DomfiscalFormPage } from '../pages/domfiscal-form/domfiscal-form';
 import { DomenvioFormPage } from '../pages/domenvio-form/domenvio-form';
 import { UvaPage } from '../pages/uva/uva';
+import { BarricasPage } from '../pages/barricas/barricas';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { UvaPage } from '../pages/uva/uva';
     DomfiscalFormPage,
     DomicilioEnvioPage,
     DomenvioFormPage,
+    BarricasPage,
   ],
   imports: [
     BrowserModule,
@@ -94,6 +96,7 @@ import { UvaPage } from '../pages/uva/uva';
     DomfiscalFormPage,
     DomicilioEnvioPage,
     DomenvioFormPage,
+    BarricasPage,
     
   ],
   providers: [
