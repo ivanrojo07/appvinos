@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { GoogleMaps, GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
 /**
  * Generated class for the ProductoresPage page.
  *
@@ -15,11 +15,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProductoresPage {
 
+  map: GoogleMap;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductoresPage');
+    this.loadMap();
+  }
+  loadMap(){
+    this.map = GoogleMaps.create('map_canvas');
   }
 
 }

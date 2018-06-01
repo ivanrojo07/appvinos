@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -39,6 +40,8 @@ import { DomfiscalFormPage } from '../pages/domfiscal-form/domfiscal-form';
 import { DomenvioFormPage } from '../pages/domenvio-form/domenvio-form';
 import { UvaPage } from '../pages/uva/uva';
 import { BarricasPage } from '../pages/barricas/barricas';
+import { UvasProvider } from '../providers/uvas/uvas';
+import { ProductoresProvider } from '../providers/productores/productores';
 
 @NgModule({
   declarations: [
@@ -102,11 +105,14 @@ import { BarricasPage } from '../pages/barricas/barricas';
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsuarioServiceProvider,
     TarjetaProvider,
     DomicilioFiscalProvider,
     DomicilioEnvioProvider,
+    UvasProvider,
+    ProductoresProvider,
     
   ]
 })
