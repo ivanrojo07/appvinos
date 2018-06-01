@@ -19,7 +19,7 @@
 
 
 <ion-content padding>
-  <ion-card *ngIf="messageError">
+  <ion-card *ngIf="messageError != null && domicilios.length == 0">
     <ion-card-content>
       <ion-card-title>
         Dirección envio

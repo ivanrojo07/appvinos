@@ -31,10 +31,20 @@ export class DomicilioFiscalPage implements OnInit{
     public alertCtrl:AlertController,
   ) {
     this.dirFiscal = new DomFiscal(null,"","","","","","","","");
+    this.messageError = null;
+    
   }
   ngOnInit(){
     this.showDireccion();
 
+  }
+  ionViewWillEnter(){
+    console.log("hola domicilio fiscal");
+    this.ngOnInit();
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad DomicilioFiscalPage');
   }
   showDireccion(){
     this.storage.get("access_token").then((val)=>{
@@ -42,6 +52,7 @@ export class DomicilioFiscalPage implements OnInit{
       this.domicilioProvider.getDomicilio(token).subscribe(result=>{
         console.log(result.domicilio);
         this.dirFiscal = result.domicilio;
+        this.messageError == null
         console.log(this.dirFiscal)
       },error=>{
         this.messageError = JSON.parse(error._body)
@@ -60,13 +71,6 @@ export class DomicilioFiscalPage implements OnInit{
     });
   }
 
-  ionViewWillEnter(){
-    console.log("hola domicilio fiscal");
-    this.ngOnInit();
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DomicilioFiscalPage');
-  }
+  
 
 }

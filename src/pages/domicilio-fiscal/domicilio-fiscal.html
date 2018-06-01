@@ -17,7 +17,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngIf="messageError">
+  <ion-card *ngIf="messageError != null && dirFiscal.id == null">
     <ion-card-content>
       <ion-card-title>
         Dirección Fiscal
@@ -28,7 +28,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngIf="!messageError">
+  <ion-card *ngIf="dirFiscal.id !=null">
     <ion-card-content>
       <ion-card-title>
         Dirección Fiscal
