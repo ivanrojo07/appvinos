@@ -30,9 +30,22 @@ export class DomicilioEnvioPage implements OnInit{
     public direccionProvider: DomicilioEnvioProvider
   ) {
     this.domicilios =[];
+    this.messageError = null;
+    // console.log(this.domicilios.length); 
   }
+
   ngOnInit(){
+    this.domicilios = [];
+    this.messageError = null;
     this.showDirecciones();
+  }
+  ionViewWillEnter(){
+    console.log("hola tarjeta");
+    this.ngOnInit();
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad DomicilioEnvioPage');
   }
 
   showDirecciones(){
@@ -42,6 +55,7 @@ export class DomicilioEnvioPage implements OnInit{
         console.log(result);
         this.domicilios = result.domicilio;
         console.log(this.domicilios);
+        this.messageError == null
       },error=>{
         this.messageError = JSON.parse(error._body)
         console.log("Error " + JSON.stringify(this.messageError));
@@ -109,14 +123,7 @@ export class DomicilioEnvioPage implements OnInit{
     });
     alert.present();
   }
-  ionViewWillEnter(){
-    console.log("hola tarjeta");
-    this.ngOnInit();
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DomicilioEnvioPage');
-  }
+  
 
   alertPresentacion(direccion){
     let alert = this.alertCtrl.create({

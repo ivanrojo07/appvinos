@@ -40,6 +40,8 @@ import { DomfiscalFormPage } from '../pages/domfiscal-form/domfiscal-form';
 import { DomenvioFormPage } from '../pages/domenvio-form/domenvio-form';
 import { UvaPage } from '../pages/uva/uva';
 import { BarricasPage } from '../pages/barricas/barricas';
+import { UvasProvider } from '../providers/uvas/uvas';
+import { ProductoresProvider } from '../providers/productores/productores';
 
 
 @NgModule({
@@ -110,6 +112,8 @@ import { BarricasPage } from '../pages/barricas/barricas';
     TarjetaProvider,
     DomicilioFiscalProvider,
     DomicilioEnvioProvider,
+    UvasProvider,
+    ProductoresProvider,
     
   ]
 })

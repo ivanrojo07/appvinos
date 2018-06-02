@@ -16,20 +16,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding *ngIf="messageError">
-<ion-card>
-  <ion-card-content>
-    <ion-card-title>
-      Tarjetas
-      </ion-card-title>
-    <p>
-      {{ messageError.message }}
-    </p>
-  </ion-card-content>
-</ion-card>
+<ion-content padding >
+  <ion-card  *ngIf="messageError != null && tarjetas.length == 0">
+    <ion-card-content>
+      <ion-card-title>
+        Tarjetas
+        </ion-card-title>
+      <p>
+        {{ messageError.message }}
+      </p>
+    </ion-card-content>
+  </ion-card>
 
-</ion-content>
-<ion-content padding *ngIf="!messageError">
   <ion-card  *ngFor="let tarjeta of tarjetas; let i = index">
     <ion-card-content>
       <ion-card-title>

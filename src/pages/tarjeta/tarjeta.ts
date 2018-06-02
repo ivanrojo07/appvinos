@@ -33,9 +33,12 @@ export class TarjetaPage implements OnInit {
     public alertCtrl: AlertController,
   ) {
     this.tarjetas = [];
+    this.messageError = null;
   }
 
   ngOnInit(){
+    this.tarjetas = [];
+    this.messageError = null;
     this.showTarjetas();
   }
   
@@ -45,6 +48,7 @@ export class TarjetaPage implements OnInit {
       this.tarjetaProvider.getTarjetas(token).subscribe(result => {
         console.log(result);
         this.tarjetas = result.tarjetas;
+        this.messageError = null;
         console.log(this.tarjetas);
       },
         error => {
@@ -82,7 +86,7 @@ export class TarjetaPage implements OnInit {
                 console.log(result);
                 // this.tarjetas = result.tarjetas;
                 // console.log(this.tarjetas);
-                this.ionViewWillEnter();
+                this.ngOnInit();
               },
                 error => {
                   this.messageError = JSON.parse(error._body)
