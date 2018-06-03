@@ -106,7 +106,6 @@ import { ProductoresProvider } from '../providers/productores/productores';
   providers: [
     StatusBar,
     SplashScreen,
-    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsuarioServiceProvider,
     TarjetaProvider,
@@ -114,6 +113,7 @@ import { ProductoresProvider } from '../providers/productores/productores';
     DomicilioEnvioProvider,
     UvasProvider,
     ProductoresProvider,
+    GoogleMaps,
     
   ]
 })

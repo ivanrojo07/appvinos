@@ -34,7 +34,7 @@ export class LoginPage implements OnInit{
     public navParams: NavParams, 
     private _usuarioService: UsuarioServiceProvider,
     public alertCtrl: AlertController,
-    private storage: Storage
+    public storage: Storage
   ) {
       this.pushPage = "HomePage";
       this.usuario = new Usuario(null,'','','','','','','');
@@ -60,6 +60,7 @@ export class LoginPage implements OnInit{
           this._usuarioService.logginData(result.access_token, result.refresh_token);
           this.navCtrl.setRoot(UserPage);
           this.storage.get("access_token").then((val) => {
+            // this.alert('TOKEN: ',val);
             console.log('Your access_token is ' + val);
           });
           
