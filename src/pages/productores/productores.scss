@@ -1,23 +1,66 @@
 page-productores {
+  div.scroll-content {
+    padding-top: 0px !important;
+  }
+
   ion-content {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 0px !important;
+    margin-top: 0px !important; // padding-top: 40px;
+    // padding-bottom: 40px;
     background-image: url(../assets/img/fondo.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    // background-color: #fff;
+    background-color: #fff;
     background-position-x: 50%;
-    ion-card{
-      height: 90%;
+    ion-slides{
+      margin-top: -30px;
     }
-  }
+    button{
+      bottom: 10px;
+    }
+  } // margin-top: 0px !important;
+  .card-background-page {
+    // margin-top: 0px !important;
+    ion-card {
+      position: relative;
+      text-align: center;
+      img {
+        filter: brightness(0.50);
+      }
+    }
+    .card-title {
+      position: absolute;
+      top: 36%;
+      font-size: 2.0em;
+      width: 100%;
+      font-weight: bold;
+      color: #fff;
+    }
+    .card-subtitle {
+      padding-top: 10px;
+      font-size: 1.0em;
+      position: absolute;
+      top: 52%;
+      width: 100%;
+      color: #fff;
+    }
+  } // ion-slides{
+  //   position: absolute;
+  //   left: 20px;
+  //   top: -20px;
+  //   bottom: 40px;
+  // }
   .bar-buttons,
   .toolbar-title {
-    color: black;
-  }
-
+    color: #fff;
+  } // img {
+  //   float: left;
+  //   display: block !important;
+  //   margin: auto;
+  //   padding: 4px;
+  // }
   button.menu {
     margin-top: 40px;
     margin-left: -4px;
@@ -28,5 +71,6 @@ page-productores {
     height: 50px;
     color: #fff;
   }
+
 
 }

@@ -42,6 +42,7 @@ import { UvaPage } from '../pages/uva/uva';
 import { BarricasPage } from '../pages/barricas/barricas';
 import { UvasProvider } from '../providers/uvas/uvas';
 import { ProductoresProvider } from '../providers/productores/productores';
+import { ProductoresMapPage } from '../pages/productores-map/productores-map';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { ProductoresProvider } from '../providers/productores/productores';
     NotificacionesPage,
     DisclaimerPage,
     ProductoresPage,
+    ProductoresMapPage,
     TutorialPage,
     UvasPage,
     UvaPage,
@@ -88,6 +90,7 @@ import { ProductoresProvider } from '../providers/productores/productores';
     NotificacionesPage,
     DisclaimerPage,
     ProductoresPage,
+    ProductoresMapPage,
     TutorialPage,
     UvasPage,
     UvaPage,

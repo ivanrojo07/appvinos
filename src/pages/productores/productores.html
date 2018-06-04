@@ -6,14 +6,32 @@
 -->
 <ion-header no-border>
 
-  <ion-navbar transparent>
-    <ion-title>productores</ion-title>
-  </ion-navbar>
+<ion-navbar transparent>
+  <button ion-button menuToggle icon-only class="menu">
+    <ion-icon></ion-icon>
+  </button>
+ <ion-title>Sobre nuestros productores</ion-title>
+
+</ion-navbar>
 
 </ion-header>
 
 
+
 <ion-content padding>
-  <ion-card id="map_canvas">
-  </ion-card>
+  <ion-slides>
+    <ion-slide *ngFor="let tarjeta of tarjetas">
+      <ion-card>
+        <ion-card-header>
+          {{tarjeta.title}}
+        </ion-card-header>
+        <ion-card-content>
+          {{tarjeta.info}}
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  
+  <button ion-button color="uva" full (click)="ShowMapa()">Ver Mapa</button>
+  
 </ion-content>
