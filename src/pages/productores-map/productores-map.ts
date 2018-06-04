@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {
   GoogleMaps, GoogleMap, GoogleMapsEvent, GoogleMapOptions, 
   Marker } from '@ionic-native/google-maps';
@@ -26,7 +26,7 @@ export class ProductoresMapPage {
   productores: Array<Productores>;
   messageError: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public productoresProvider: ProductoresProvider, public alertCtrl: AlertController, ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public productoresProvider: ProductoresProvider) {
     this.productores = [];
 
   }
@@ -73,16 +73,6 @@ export class ProductoresMapPage {
       this.messageError = JSON.parse(error._body)
       console.log("Error " + JSON.stringify(this.messageError));
     });
-
-  }
-  public alert(titulo: string, contenido: string) {
-    let alert = this.alertCtrl.create({
-      title: titulo,
-      subTitle: contenido,
-      buttons: ['OK']
-    });
-    alert.present();
-
 
   }
 
