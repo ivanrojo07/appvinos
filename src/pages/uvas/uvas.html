@@ -19,7 +19,8 @@
 
 
   <ion-card *ngFor="let tarjeta of tarjetas" (click)="openUva(tarjeta)">
-    <img [src]="tarjeta.image" alt="">
+<img src="http://byw.from-tn.com/pwm/{{tarjeta.image}}" alt="">
+
     <div class="card-title">{{tarjeta.title}}</div>
     <div class="card-subtitle">{{tarjeta.subtitle}}</div>
   </ion-card>

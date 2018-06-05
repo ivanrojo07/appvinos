@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertCmp, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import { TarjetaProvider } from '../../providers/providers';
 import { Storage } from '@ionic/storage';

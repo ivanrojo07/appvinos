@@ -52,7 +52,7 @@ export class TarjetaPage implements OnInit {
         console.log(this.tarjetas);
       },
         error => {
-          this.messageError = JSON.parse(error._body)
+          this.messageError = JSON.parse(error._body);
           console.log("Error " + JSON.stringify(this.messageError));
           
         });
@@ -89,7 +89,7 @@ export class TarjetaPage implements OnInit {
                 this.ngOnInit();
               },
                 error => {
-                  this.messageError = JSON.parse(error._body)
+                  this.messageError = JSON.parse(error._body);
                   console.log("Error " + JSON.stringify(this.messageError));
                   
                 });

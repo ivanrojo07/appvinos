@@ -16,15 +16,16 @@ export class UvasProvider {
 
   constructor(public http: Http) {
     console.log('Hello UvasProvider Provider');
-    this.url = "http://byw.from-tn.com/pwn/api/uvas";
+    this.url = "http://byw.from-tn.com/pwm/api/uvas";
   }
 
   getUvas(){
     let headers = new Headers({
-      'Content-Type' : "application/json",
-      'Accept' : "application/json"
+      'Content-Type': "application/json",
+      'Accept': "application/json"
     });
-    return this.http.get(this.url,{headers:headers}).map(res=>res.json());
+    return this.http.get(this.url, { headers: headers }).map(res => res.json());
+
   }
 
 }
