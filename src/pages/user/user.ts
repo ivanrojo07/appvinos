@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
 import { UsuarioServiceProvider } from '../../providers/providers';
 import { Storage } from '@ionic/storage';
+import { MarcaProvider } from '../../providers/marca/marca';
+import { Marcas } from '../../models/marca';
 
 /**
  * Generated class for the UserPage page.
@@ -15,21 +17,25 @@ import { Storage } from '@ionic/storage';
 @Component({
   selector: 'page-user',
   templateUrl: 'user.html',
-  providers: [UsuarioServiceProvider]
+  providers: [UsuarioServiceProvider,MarcaProvider]
 })
 export class UserPage {
 
   public usuario: Usuario;
   public access_token: string;
+  public marcas: Marcas[];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private _usuarioService: UsuarioServiceProvider,
+    private marcaProvider: MarcaProvider,
     private storage: Storage,
   ) {
+    this.marcas = [];
     this.usuario = new Usuario(null, '', '', '', '', '', '', '');
   }
   ngOnInit() {
+    this.getMarcas();
     this.storage.get("access_token").then((val) => {
       // console.log("TOKEN: "+val);
       this.access_token = val;
@@ -56,6 +62,12 @@ export class UserPage {
       }
     });
 
+  }
+  getMarcas(){
+    this.marcaProvider.getMarcas().subscribe(result=>{
+      this.marcas = result.marcas;
+      console.log(this.marcas);
+    })
   }
 
   ionViewDidLoad() {

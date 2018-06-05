@@ -17,5 +17,7 @@
 
 <ion-content fullscreen padding>
   <div class="splash-bg"></div>
-
+  <div class="barril" *ngFor="let marca of marcas">
+    <p class="barril-p">{{marca.nombre}}</p>
+  </div>
 </ion-content>

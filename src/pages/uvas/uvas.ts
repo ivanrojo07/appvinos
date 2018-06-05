@@ -224,9 +224,9 @@ export class UvasPage implements OnInit {
   }
   ngOnInit(){
     this.uvasProvider.getUvas().subscribe(result=>{
-      console.log(result);
+      // console.log(result);
       this.tarjetas = result.uvas;
-      console.log(this.tarjetas);
+      // console.log(this.tarjetas);
     }, error=>{
       console.log(error);
     });

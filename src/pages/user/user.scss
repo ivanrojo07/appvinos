@@ -11,6 +11,22 @@ page-user {
         background-position-x: 50%;
         
       }
+      .barril{
+        height: 144px;
+        width: 144px;
+        background-image: url(../assets/img/barril.png);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: unset;
+        background-size: contain;
+        .barril-p{
+          color: #fff;
+          font-size: 1.5rem;
+          margin-left: 45px;
+          padding-top: 25px;
+
+        }
+      }
       
       .justified {
         text-align: justify !important;

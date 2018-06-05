@@ -43,6 +43,7 @@ import { BarricasPage } from '../pages/barricas/barricas';
 import { UvasProvider } from '../providers/uvas/uvas';
 import { ProductoresProvider } from '../providers/productores/productores';
 import { ProductoresMapPage } from '../pages/productores-map/productores-map';
+import { MarcaProvider } from '../providers/marca/marca';
 
 
 @NgModule({
@@ -117,6 +118,7 @@ import { ProductoresMapPage } from '../pages/productores-map/productores-map';
     UvasProvider,
     ProductoresProvider,
     GoogleMaps,
+    MarcaProvider,
     
   ]
 })
