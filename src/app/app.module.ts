@@ -44,7 +44,7 @@ import { UvasProvider } from '../providers/uvas/uvas';
 import { ProductoresProvider } from '../providers/productores/productores';
 import { ProductoresMapPage } from '../pages/productores-map/productores-map';
 import { MarcaProvider } from '../providers/marca/marca';
-
+import { MarcaPage } from "../pages/marca/marca";
 
 @NgModule({
   declarations: [
@@ -71,6 +71,7 @@ import { MarcaProvider } from '../providers/marca/marca';
     DomicilioEnvioPage,
     DomenvioFormPage,
     BarricasPage,
+    MarcaPage,
   ],
   imports: [
     BrowserModule,
@@ -105,6 +106,7 @@ import { MarcaProvider } from '../providers/marca/marca';
     DomicilioEnvioPage,
     DomenvioFormPage,
     BarricasPage,
+    MarcaPage,
     
   ],
   providers: [

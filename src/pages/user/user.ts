@@ -4,8 +4,8 @@ import { Usuario } from '../../models/usuario';
 import { UsuarioServiceProvider } from '../../providers/providers';
 import { Storage } from '@ionic/storage';
 import { MarcaProvider } from '../../providers/marca/marca';
-import { Marcas } from '../../models/marca';
-
+import { Marca } from '../../models/marca';
+import { MarcaPage } from "../marca/marca";
 /**
  * Generated class for the UserPage page.
  *
@@ -23,7 +23,7 @@ export class UserPage {
 
   public usuario: Usuario;
   public access_token: string;
-  public marcas: Marcas[];
+  public marcas: Marca[];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -68,6 +68,11 @@ export class UserPage {
       this.marcas = result.marcas;
       console.log(this.marcas);
     })
+  }
+
+  openMarca(marca){
+    console.log(marca);
+    this.navCtrl.push(MarcaPage,{marca:marca,usuario:this.usuario});
   }
 
   ionViewDidLoad() {

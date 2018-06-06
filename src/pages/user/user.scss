@@ -19,12 +19,15 @@ page-user {
         background-repeat: no-repeat;
         background-attachment: unset;
         background-size: contain;
-        .barril-p{
+        ion-label{
           color: #fff;
           font-size: 1.5rem;
-          margin-left: 45px;
-          padding-top: 25px;
-
+          text-align: center;
+          margin-top: 30px !important;
+          // margin-right: 24px !important;
+          margin-bottom: 30px !important;
+          // margin-left: 24px !important;
+          // background-color: black;
         }
       }
       

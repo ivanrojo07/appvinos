@@ -30,7 +30,7 @@ export class UvaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.uva = navParams.get("uva");
-    console.log(this.uva);
+    // console.log(this.uva);
   }
 
   ionViewDidLoad() {
