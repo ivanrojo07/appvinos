@@ -27,30 +27,25 @@ export class MarcaPage implements OnInit {
   }
   verProductor(vinicola){
     let alert = this.alertCtrl.create({
-      title: '${vinicola.nombre}',
+      title: `${vinicola.nombre}`,
       message: `<ion-card>
     <ion-card-content>
       <p>
-        <strong>Vinicola: ${vinicola.nombre}</strong>  
+        <strong>Vinicola : ${vinicola.nombre}</strong>  
       </p>
       <p>
-        <strong>Desde: ${vinicola.inicio}</strong> 
+        <strong>Desde : ${vinicola.inicio}</strong> 
       </p>
-      <p *ngIf="${vinicola.distinciones} == "hfh"">
-        <strong>Distinciones: ${vinicola.distinciones}</strong> 
+      ${vinicola.distinciones != null ? '<p><strong> Distinciones : '+vinicola.distinciones+'</strong></p>' : ''} 
+      <p>
+        <strong>Nuestra Filosofia : ${vinicola.filosofia}</strong> 
       </p>
       <p>
-        <strong>Nuestra filosofia: ${vinicola.filosofia}</strong> 
+        <strong>Locación : ${vinicola.locacion}</strong> 
       </p>
-      <p>
-        <strong>Locación: ${vinicola.locacion}</strong> 
-      </p>
-      <p>
-        <strong>Nuestro enologo: ${vinicola.enologo}</strong> 
-      </p>
-      <p>
-        <strong>Nuestro wine maker: ${vinicola.wine_maker}</strong> 
-      </p>
+      <p><strong>Telefono : ${vinicola.telefono}</strong></p>
+      ${vinicola.enologo != null ? '<p><strong> Nuestro Enologo : ' + vinicola.enologo + '</strong></p>' : ''}
+      ${vinicola.wine_maker != null ? '<p><strong> Nuestro Wine Maker : ' + vinicola.wine_maker + '</strong></p>' : ''} 
       
     </ion-card-content>
 

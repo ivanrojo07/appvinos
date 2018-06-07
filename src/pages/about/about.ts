@@ -20,7 +20,7 @@ export class AboutPage {
       title: "",
       description: "<strong>PWM®️</strong> (<strong>Premium Wine Makers®️</strong>), es un proyecto para ofertar cómodamente desde un celular, Tablet o computadora vino mexicano por mandato de producción, a precios prefereciales con tendencia a gusto personal de nuestros clientes con la mas alta calidad en producción de vino.",
       image: "assets/img/titulo.png",
-      footerimage:"assets/img/logo512.PNG"
+      footerimage:"assets/img/pwmSolidos.jpg"
     },
     {
       title: "",
