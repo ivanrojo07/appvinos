@@ -15,8 +15,20 @@ page-productores {
     background-color: #fff;
     background-position-x: 50%;
     ion-slides{
+      ion-card{
+
+        ion-card-header {
+          display: block;
+          overflow: hidden;
+          word-wrap: break-word !important;
+          text-overflow: ellipsis;
+          white-space: inherit;
+        }
+
+      }  
       margin-top: -30px;
     }
+
     button{
       bottom: 10px;
     }
