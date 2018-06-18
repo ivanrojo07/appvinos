@@ -1,3 +1,4 @@
+import { UserFormPage } from './../user-form/user-form';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ContrasenaPage } from '../contrasena/contrasena';
@@ -28,7 +29,8 @@ export class SettingPage {
   { title: "Cambiar Contraseña", component: ContrasenaPage},
   { title: "Domicilio Fiscal", component:DomicilioFiscalPage },
   { title: "Domicilio de entrega", component:DomicilioEnvioPage},
-  { title: "Tarjetas", component: TarjetaPage}  
+  { title: "Tarjetas", component: TarjetaPage},
+  { title:"Editar Perfil", component: UserFormPage},
  ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

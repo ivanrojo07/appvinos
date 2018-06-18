@@ -11,6 +11,12 @@
       <!-- <ion-icon></ion-icon> -->
     </button>
     <ion-title>{{ usuario.nombre | titlecase }} {{ usuario.apaterno | titlecase }} {{ usuario.amaterno | titlecase }} </ion-title>
+    <ion-buttons end>
+      <button ion-button color="primary" outline item-end icon-start (click)="abrirForm()">
+        <ion-icon name="wine"></ion-icon>
+        Crea tú propio vino
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 

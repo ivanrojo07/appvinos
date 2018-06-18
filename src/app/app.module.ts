@@ -45,6 +45,8 @@ import { ProductoresProvider } from '../providers/productores/productores';
 import { ProductoresMapPage } from '../pages/productores-map/productores-map';
 import { MarcaProvider } from '../providers/marca/marca';
 import { MarcaPage } from "../pages/marca/marca";
+import { UserFormPage } from '../pages/user-form/user-form';
+import { MyWineFormPage } from '../pages/my-wine-form/my-wine-form';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import { MarcaPage } from "../pages/marca/marca";
     SignupPage,
     LoginPage,
     UserPage,
+    UserFormPage,
     AboutPage,
     NotificacionesPage,
     DisclaimerPage,
@@ -72,6 +75,7 @@ import { MarcaPage } from "../pages/marca/marca";
     DomenvioFormPage,
     BarricasPage,
     MarcaPage,
+    MyWineFormPage,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +92,7 @@ import { MarcaPage } from "../pages/marca/marca";
     SignupPage,
     LoginPage,
     UserPage,
+    UserFormPage,
     AboutPage,
     NotificacionesPage,
     DisclaimerPage,
@@ -107,6 +112,7 @@ import { MarcaPage } from "../pages/marca/marca";
     DomenvioFormPage,
     BarricasPage,
     MarcaPage,
+    MyWineFormPage,
     
   ],
   providers: [
