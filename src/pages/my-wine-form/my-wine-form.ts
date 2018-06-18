@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProductoresProvider, UvasProvider, MarcaProvider } from '../../providers/providers';
-
+import { Storage } from "@ionic/storage";
 export interface Barricas{
   id: number,
   title: string,
