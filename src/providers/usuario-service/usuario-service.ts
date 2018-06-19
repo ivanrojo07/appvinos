@@ -123,4 +123,15 @@ export class UsuarioServiceProvider {
     return this._http.post(this.url+"password",json,{headers:headers}).map(res=>res.json());
   }
 
+  updateUser(token,user_id,params){
+    let headers = new Headers({
+      'Content-Type' : 'application/json',
+      'Accept' : 'application/json',
+      'Authorization' : 'Bearer '+token
+    });
+    // console.log(headers);
+    // console.log(params);
+    return this._http.post(this.url+'users/'+user_id,params,{headers:headers}).map(res=>res.json());
+  }
+
 }

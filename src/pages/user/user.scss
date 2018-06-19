@@ -24,9 +24,12 @@ page-user {
           font-size: 1.5rem;
           text-align: center;
           margin-top: 30px !important;
-          // margin-right: 24px !important;
+          word-wrap: break-word !important;
+          text-overflow: ellipsis;
+          white-space: inherit;
+          margin-right: 8px !important;
           margin-bottom: 30px !important;
-          // margin-left: 24px !important;
+          margin-left: 8px !important;
           // background-color: black;
         }
       }

@@ -1,3 +1,4 @@
+import { MyWineFormPage } from './../my-wine-form/my-wine-form';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
@@ -62,6 +63,9 @@ export class UserPage {
       }
     });
 
+  }
+  abrirForm(){
+    this.navCtrl.push(MyWineFormPage);
   }
   getMarcas(){
     this.marcaProvider.getMarcas().subscribe(result=>{
