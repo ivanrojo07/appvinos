@@ -14,5 +14,25 @@
 
 
 <ion-content padding>
-
+  <ion-card>
+    <form action="ngSubmit" #formMiVino="ngForm" (ngSubmit)="onSubmit(formMiVino)">
+      <ion-list radio-group NgModel>
+        <ion-list-header>Seleccione su Uva:</ion-list-header>
+        <ion-item *ngFor="let uva of uvas">
+          <ion-label >{{uva.title}}</ion-label>
+          <ion-radio value="{{uva.title}}"></ion-radio>
+          <button ion-button clear item-end (click)="uvaDetail(uva)">Detalles</button>
+        </ion-item>
+      </ion-list>
+      <br>
+      <ion-list radio-group NgModel>
+        <ion-list-header>Seleccione su Productor:</ion-list-header>
+        <ion-item *ngFor="let productor of productores">
+          <ion-label>{{productor.nombre}}</ion-label>
+          <ion-radio value="{{productor.nombre}}"></ion-radio>
+          <button ion-button clear item-end (click)="productorDetail(productor)">Detalles</button>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-card>
 </ion-content>
