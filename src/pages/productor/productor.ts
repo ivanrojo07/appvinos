@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { GoogleMap, Marker, GoogleMapOptions, GoogleMaps } from '@ionic-native/google-maps';
 
 
@@ -34,7 +34,7 @@ export class ProductorPage {
   map: GoogleMap;
   marker: Marker;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl:AlertController) {
     this.productor = navParams.get('productor');
     console.log(this.productor);
   }
@@ -42,6 +42,7 @@ export class ProductorPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductorPage');
     this.loadMap();
+    
   }
 
   loadMap() {
@@ -52,7 +53,7 @@ export class ProductorPage {
           lat: this.productor.lat,
           lng: this.productor.long
         },
-        zoom: 3,
+        zoom: 10,
         tilt: 30
       }
     }
@@ -66,7 +67,7 @@ export class ProductorPage {
     
         this.map.addMarker({
           title: this.productor.nombre,
-          icon: 'red',
+          icon: './assets/img/pwmicono.png',
           animation: 'DROP',
           position: {
             lat: this.productor.lat,

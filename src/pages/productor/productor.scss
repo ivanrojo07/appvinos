@@ -1,16 +1,16 @@
 page-productor {
-  ion-content{
-    .fondo{
+  ion-content {
+    .fondo {
       background-image: url(../assets/img/fondo.jpg) !important;
-    padding-top: 0px !important;
-    margin-top: 0px !important; // padding-top: 40px;
-    // padding-bottom: 40px;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: #fff;
-    background-position-x: 50%;
+      padding-top: 0px !important;
+      margin-top: 0px !important; // padding-top: 40px;
+      // padding-bottom: 40px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      background-color: #fff;
+      background-position-x: 50%;
     }
     background-image: url(../assets/img/fondo.jpg) !important;
     padding-top: 0px !important;
@@ -22,9 +22,8 @@ page-productor {
     background-size: cover;
     background-color: #fff;
     background-position-x: 50%;
-    ion-slides{
-      ion-card{
-
+    ion-slides {
+      ion-card {
         ion-card-header {
           display: block;
           overflow: hidden;
@@ -32,12 +31,10 @@ page-productor {
           text-overflow: ellipsis;
           white-space: inherit;
         }
-
-      }  
+      }
       margin-top: -30px;
     }
-
-    button{
+    button {
       bottom: 10px;
     }
   } // margin-top: 0px !important;
@@ -54,7 +51,6 @@ page-productor {
   .bar-button {
     color: #fff;
   }
-
   .bar-buttons,
   .toolbar-title {
     color: #fff; // margin-top: -22px;

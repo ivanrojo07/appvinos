@@ -61,7 +61,7 @@ export class ProductoresMapPage {
       this.productores.forEach(productor => {
         this.map.addMarker({
           title: productor.nombre,
-          icon: 'red',
+          icon: './assets/img/pwmicono.png',
           animation: 'DROP',
           position: {
             lat: productor.lat,
