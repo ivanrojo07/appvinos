@@ -28,12 +28,12 @@ export class ProductoresMapPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public productoresProvider: ProductoresProvider) {
     this.productores = [];
+    this.loadMap();
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductoresMapPage');
-    this.loadMap();
   }
 
   loadMap() {
