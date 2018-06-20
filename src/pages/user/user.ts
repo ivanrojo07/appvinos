@@ -65,7 +65,7 @@ export class UserPage {
 
   }
   abrirForm(){
-    this.navCtrl.push(MyWineFormPage);
+    this.navCtrl.push(MyWineFormPage,{usuario:this.usuario});
   }
   getMarcas(){
     this.marcaProvider.getMarcas().subscribe(result=>{

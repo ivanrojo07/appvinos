@@ -1,3 +1,4 @@
+import { MapPage } from './../pages/map/map';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -40,6 +41,7 @@ import { DomfiscalFormPage } from '../pages/domfiscal-form/domfiscal-form';
 import { DomenvioFormPage } from '../pages/domenvio-form/domenvio-form';
 import { UvaPage } from '../pages/uva/uva';
 import { BarricasPage } from '../pages/barricas/barricas';
+import { BarricaPage } from '../pages/barrica/barrica';
 import { UvasProvider } from '../providers/uvas/uvas';
 import { ProductoresProvider } from '../providers/productores/productores';
 import { ProductoresMapPage } from '../pages/productores-map/productores-map';
@@ -76,8 +78,10 @@ import { ProductorPage } from '../pages/productor/productor';
     DomicilioEnvioPage,
     DomenvioFormPage,
     BarricasPage,
+    BarricaPage,
     MarcaPage,
     MyWineFormPage,
+    MapPage,
   ],
   imports: [
     BrowserModule,
@@ -114,8 +118,10 @@ import { ProductorPage } from '../pages/productor/productor';
     DomicilioEnvioPage,
     DomenvioFormPage,
     BarricasPage,
+    BarricaPage,
     MarcaPage,
     MyWineFormPage,
+    MapPage,
     
   ],
   providers: [

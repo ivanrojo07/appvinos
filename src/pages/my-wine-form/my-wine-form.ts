@@ -1,11 +1,14 @@
+import { MarcaPage } from './../marca/marca';
 import { UvaPage } from './../uva/uva';
 import { NgForm } from '@angular/forms';
 import { Marca } from './../../models/marca';
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ProductoresProvider, UvasProvider, MarcaProvider } from '../../providers/providers';
 import { Storage } from "@ionic/storage";
 import { ProductorPage } from '../productor/productor';
+import { Usuario } from '../../models/usuario';
+import { BarricaPage } from '../barrica/barrica';
 
 export interface Barrica{
   id: number,
@@ -52,9 +55,13 @@ export interface Productor{
 export class MyWineFormPage implements OnInit {
 
   public uvas : Uva[];
-  public barricas : Barrica[];
+  public barricas : Barrica[]=[
+    { id: 1, title:"Roble Frances", description:"Aromatico", image:"assets/img/roble_frances.jpg"  },
+    { id:2, title:"Roble Americano", description:"Aumenta el sabor", image:"assets/img/roble_americano.jpg"}
+  ];
   public productores: Productor[];
   public marcas : Marca[]
+  public usuario: Usuario;
 
   constructor(
     public navCtrl: NavController, 
@@ -63,12 +70,14 @@ export class MyWineFormPage implements OnInit {
     private productoresProvider:ProductoresProvider,
     private marcaProvider:MarcaProvider,
     private storage: Storage,
-    public modalCtrl: ModalController,
+    public alertCtrl: AlertController,
   ) {
     this.uvas = [];
-    this.barricas = [];
+    // this.barricas = [];
     this.productores = [];
     this.marcas = [];
+    this.usuario = navParams.get('usuario');
+    
   }
   ngOnInit(){
     this.getUvas();
@@ -76,7 +85,16 @@ export class MyWineFormPage implements OnInit {
     
   }
   onSubmit(form:NgForm){
-    
+    console.log(form.value);
+    if (form.valid) {
+      this.alert('Creado', 'Tú orden se ha hecho');
+      this.navCtrl.pop();
+    } else {
+      
+    }
+  }
+  regresar(){
+    this.navCtrl.pop();
   }
   getUvas(){
     this.uvasProvider.getUvas().subscribe(res=>{
@@ -100,10 +118,40 @@ export class MyWineFormPage implements OnInit {
     })
   }
   productorDetail(productor){
-    // console.log(productor);
-    this.navCtrl.push(ProductorPage,{productor:productor});
+    console.log(productor);
+    this.navCtrl.push(ProductorPage,{productor:productor,usuario:this.usuario});
   }
 
+  getMarcas(productor:any){
+    console.log(productor);
+    this.marcas = [];
+    this.marcaProvider.getMarcas().subscribe(res=>{
+      // this.marcas = res.marcas;
+      res.marcas.forEach(element => {
+        if (element.vinicola_id == productor.id) {
+          this.marcas.push(element);
+        }
+      });
+      console.log(this.marcas);
+    });
+  }
+  marcaDetail(marca:Marca){
+    console.log(marca);
+    console.log(this.usuario);
+    this.navCtrl.push(MarcaPage,{marca:marca,usuario:this.usuario});
+  }
+  barricaDetail(barrica:Barrica){
+    console.log(barrica);
+    this.navCtrl.push(BarricaPage,{barrica:barrica})
+  }
+  alert(titulo: string, contenido: string) {
+    let alert = this.alertCtrl.create({
+      title: titulo,
+      subTitle: contenido,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyWineFormPage');
   }

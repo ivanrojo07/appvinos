@@ -14,9 +14,9 @@
 
 
 <ion-content padding>
-  <ion-card>
-    <form action="ngSubmit" #formMiVino="ngForm" (ngSubmit)="onSubmit(formMiVino)">
-      <ion-list radio-group NgModel>
+  <form action="ngSubmit" #formMiVino="ngForm" (ngSubmit)="onSubmit(formMiVino)">
+    <ion-card>
+<ion-list radio-group ngModel name="uvas" required>
         <ion-list-header>Seleccione su Uva:</ion-list-header>
         <ion-item *ngFor="let uva of uvas">
           <ion-label >{{uva.title}}</ion-label>
@@ -25,14 +25,34 @@
         </ion-item>
       </ion-list>
       <br>
-      <ion-list radio-group NgModel>
+      <ion-list radio-group ngModel name="productor" required>
         <ion-list-header>Seleccione su Productor:</ion-list-header>
         <ion-item *ngFor="let productor of productores">
           <ion-label>{{productor.nombre}}</ion-label>
-          <ion-radio value="{{productor.nombre}}"></ion-radio>
+          <ion-radio value="{{productor.nombre}}" (ionSelect)="getMarcas(productor)"></ion-radio>
           <button ion-button clear item-end (click)="productorDetail(productor)">Detalles</button>
         </ion-item>
       </ion-list>
+      <br>
+      <ion-list radio-group ngModel name="marca" required *ngIf="marcas.length != 0">
+        <ion-list-header>Seleccione su Marca:</ion-list-header>
+        <ion-item *ngFor="let marca of marcas">
+          <ion-label>{{marca.nombre}}</ion-label>
+          <ion-radio value="{{marca.nombre}}"></ion-radio>
+          <button ion-button clear item-end (click)="marcaDetail(marca)">Detalles</button>
+        </ion-item>
+      </ion-list>
+      <br>
+      <ion-list radio-group ngModel name="barrica" required>
+        <ion-list-header>Seleccione su barrica:</ion-list-header>
+        <ion-item *ngFor="let barrica of barricas">
+          <ion-label>{{barrica.title}}</ion-label>
+          <ion-radio value="{{barrica.title}}"></ion-radio>
+          <button ion-button clear item-end (click)="barricaDetail(barrica)">Detalles</button>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+<button ion-button color="primary" type="submit" [disabled]="!formMiVino.form.valid" block>Crear tu vino</button>
     </form>
-  </ion-card>
+<button ion-button color="light" (click)="regresar()" block>Cancelar</button>
 </ion-content>
