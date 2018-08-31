@@ -22,6 +22,7 @@ import { PrivacidadPage } from '../pages/privacidad/privacidad';
 import { HomePage } from '../pages/home/home';
 import { SettingPage } from '../pages/setting/setting';
 import { BarricasPage } from '../pages/barricas/barricas';
+import { PuntosPage } from "../pages/puntos/puntos";
 
 export interface PageInterface{
   title: string;
@@ -40,6 +41,7 @@ export class MyApp {
   loggedInPages: PageInterface[]=[
 
     { title: "Home", component: UserPage  },
+    { title: "Puntos Corchos", component:PuntosPage},
     { title: "Ajustes", component: SettingPage},
     { title: "Acerca de nosotros", component: AboutPage },
     { title: "Notificaciones", component: NotificacionesPage },

@@ -50,6 +50,8 @@ import { MarcaPage } from "../pages/marca/marca";
 import { UserFormPage } from '../pages/user-form/user-form';
 import { MyWineFormPage } from '../pages/my-wine-form/my-wine-form';
 import { ProductorPage } from '../pages/productor/productor';
+import { PuntosCorchosProvider } from '../providers/puntos-corchos/puntos-corchos';
+import { PuntosPage } from '../pages/puntos/puntos';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,7 @@ import { ProductorPage } from '../pages/productor/productor';
     BarricaPage,
     MarcaPage,
     MyWineFormPage,
+    PuntosPage,
     MapPage,
   ],
   imports: [
@@ -121,6 +124,7 @@ import { ProductorPage } from '../pages/productor/productor';
     BarricaPage,
     MarcaPage,
     MyWineFormPage,
+    PuntosPage,
     MapPage,
     
   ],
@@ -136,6 +140,7 @@ import { ProductorPage } from '../pages/productor/productor';
     ProductoresProvider,
     GoogleMaps,
     MarcaProvider,
+    PuntosCorchosProvider,
     
   ]
 })

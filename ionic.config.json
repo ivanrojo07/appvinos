@@ -1,8 +1,8 @@
 {
   "name": "vinedoBlank",
-  "app_id": "945fcd45",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular",
+  "pro_id": "945fcd45"
 }
