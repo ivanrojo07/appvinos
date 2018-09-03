@@ -1,12 +1,12 @@
+import { BarricaProvider } from './../../providers/providers';
 import { MyWineFormPage } from './../my-wine-form/my-wine-form';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
 import { UsuarioServiceProvider } from '../../providers/providers';
 import { Storage } from '@ionic/storage';
-import { MarcaProvider } from '../../providers/marca/marca';
-import { Marca } from '../../models/marca';
-import { MarcaPage } from "../marca/marca";
+import { ProductosPage } from '../productos/productos';
+
 /**
  * Generated class for the UserPage page.
  *
@@ -18,25 +18,25 @@ import { MarcaPage } from "../marca/marca";
 @Component({
   selector: 'page-user',
   templateUrl: 'user.html',
-  providers: [UsuarioServiceProvider,MarcaProvider]
+  providers: [UsuarioServiceProvider, BarricaProvider]
 })
 export class UserPage {
 
   public usuario: Usuario;
   public access_token: string;
-  public marcas: Marca[];
+  public barricas: any[];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private _usuarioService: UsuarioServiceProvider,
-    private marcaProvider: MarcaProvider,
+    private barricaProvider: BarricaProvider,
     private storage: Storage,
   ) {
-    this.marcas = [];
+    this.barricas = [];
     this.usuario = new Usuario(null, '', '', '', '', '', '', '');
   }
   ngOnInit() {
-    this.getMarcas();
+   
     this.storage.get("access_token").then((val) => {
       // console.log("TOKEN: "+val);
       this.access_token = val;
@@ -58,7 +58,13 @@ export class UserPage {
           this.usuario.telefono = result.telefono;
           this.usuario.password = result.password;
           console.log("USUARIO" + JSON.stringify(this.usuario));
-
+          this.barricaProvider.getBarricas(this.access_token).subscribe(result=>{
+            console.log(result);
+            this.barricas = result['barricas'];
+            console.log(this.barricas);
+          },error=>{
+            console.log(error);
+          });
         });
       }
     });
@@ -67,17 +73,12 @@ export class UserPage {
   abrirForm(){
     this.navCtrl.push(MyWineFormPage,{usuario:this.usuario});
   }
-  getMarcas(){
-    this.marcaProvider.getMarcas().subscribe(result=>{
-      this.marcas = result.marcas;
-      console.log(this.marcas);
-    })
+
+  openBarrica(barrica){
+    this.navCtrl.push(ProductosPage, { barrica: barrica, usuario: this.usuario });
   }
 
-  openMarca(marca){
-    console.log(marca);
-    this.navCtrl.push(MarcaPage,{marca:marca,usuario:this.usuario});
-  }
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserPage');

@@ -1,4 +1,6 @@
+import { ProductosPage } from './../pages/productos/productos';
 import { MapPage } from './../pages/map/map';
+import { SocialSharing } from "@ionic-native/social-sharing";
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -45,13 +47,12 @@ import { BarricaPage } from '../pages/barrica/barrica';
 import { UvasProvider } from '../providers/uvas/uvas';
 import { ProductoresProvider } from '../providers/productores/productores';
 import { ProductoresMapPage } from '../pages/productores-map/productores-map';
-import { MarcaProvider } from '../providers/marca/marca';
-import { MarcaPage } from "../pages/marca/marca";
 import { UserFormPage } from '../pages/user-form/user-form';
 import { MyWineFormPage } from '../pages/my-wine-form/my-wine-form';
 import { ProductorPage } from '../pages/productor/productor';
 import { PuntosCorchosProvider } from '../providers/puntos-corchos/puntos-corchos';
 import { PuntosPage } from '../pages/puntos/puntos';
+import { BarricaProvider } from '../providers/barrica/barrica';
 
 @NgModule({
   declarations: [
@@ -81,10 +82,10 @@ import { PuntosPage } from '../pages/puntos/puntos';
     DomenvioFormPage,
     BarricasPage,
     BarricaPage,
-    MarcaPage,
     MyWineFormPage,
     PuntosPage,
     MapPage,
+    ProductosPage,
   ],
   imports: [
     BrowserModule,
@@ -122,10 +123,10 @@ import { PuntosPage } from '../pages/puntos/puntos';
     DomenvioFormPage,
     BarricasPage,
     BarricaPage,
-    MarcaPage,
     MyWineFormPage,
     PuntosPage,
     MapPage,
+    ProductosPage,
     
   ],
   providers: [
@@ -139,8 +140,9 @@ import { PuntosPage } from '../pages/puntos/puntos';
     UvasProvider,
     ProductoresProvider,
     GoogleMaps,
-    MarcaProvider,
+    SocialSharing,
     PuntosCorchosProvider,
+    BarricaProvider,
     
   ]
 })

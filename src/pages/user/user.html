@@ -24,9 +24,14 @@
 <ion-content padding>
   <div class="splash-bg"></div>
   
-  <ion-row>
-    <ion-col col-6 class="barril" *ngFor="let marca of marcas; let i =index" (click)="openMarca(marca)">
-      <ion-label>{{marca.nombre}}<br>de<br>{{marca.vinicola.nombre}}</ion-label>
+  <ion-row style="background-color:rgba(163, 133, 64, 0.613)" *ngFor="let barrica of barricas; let i =index" (click)="openBarrica(barrica)">
+    <ion-col col-6 class="barril" >
+    </ion-col>
+    <ion-col col-6>
+      <p>Barrica: {{barrica.tipo_bar}}</p>
+      <p>Tostado: {{barrica.tostado}}</p>
+      <p>Uva: {{barrica.uva}}</p>
+      <p>Precio: $ {{barrica.precio_venta}} USD</p>
     </ion-col>
   </ion-row>
 

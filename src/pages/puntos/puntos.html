@@ -6,13 +6,40 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Puntos Corchos</ion-title>
+  <ion-navbar transparent>
+    <button ion-button menuToggle icon-only class="menu">
+      <ion-icon></ion-icon>
+      <!-- <ion-icon></ion-icon> -->
+    </button>
+    <ion-title>Puntos Corchos: {{misPuntos}}</ion-title>
+    <ion-buttons end>
+      <button ion-button color="light" round icon-end icon-only end (click)="newCode()">
+        <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-list-header>
+      Mis codigos de invitación 
+    </ion-list-header>
+    <ion-item *ngFor="let micupon of misCupones">
+      <h2>Codigo:{{micupon.codigo}}</h2>
+      <p>puntos: {{micupon.puntos}} • expira: {{micupon.expira | date: 'mediumDate'}}</p>
+      <button ion-button clear item-end (click)="shareCode(micupon)">Compartir</button>
+    </ion-item>
+    <ion-list-header>
+      Códigos agregados: <button ion-button clear item-end (click)="ingresarCodigo()">Ingresar código</button>
+    </ion-list-header>
+    <ion-item *ngFor="let cupon of cupones">
+      <h2>Codigo:{{cupon.codigo}}</h2>
+      <p>puntos: {{cupon.puntos}}</p>
+      
+    </ion-item>
+  </ion-list>
 </ion-content>
+

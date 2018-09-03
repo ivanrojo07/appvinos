@@ -22,8 +22,8 @@ export class PuntosCorchosProvider {
   getCodigos(token){
     let headers = new Headers({
       "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization:
+      'Accept': "application/json",
+      'Authorization':
         "Bearer "+token
     });
     return this.http.get(this.url,{headers:headers}).map(res=>res.json());
@@ -40,7 +40,9 @@ export class PuntosCorchosProvider {
   }
 
   setCodigo(token,form){
-    let params=form;
+    let params={
+      codigo:form
+    };
     let headers = new Headers({
       'Content-Type':'application/json',
       'Accept':'application/json',

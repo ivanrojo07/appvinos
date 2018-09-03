@@ -1,10 +1,8 @@
-import { MarcaPage } from './../marca/marca';
 import { UvaPage } from './../uva/uva';
 import { NgForm } from '@angular/forms';
-import { Marca } from './../../models/marca';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { ProductoresProvider, UvasProvider, MarcaProvider } from '../../providers/providers';
+import { ProductoresProvider, UvasProvider } from '../../providers/providers';
 import { Storage } from "@ionic/storage";
 import { ProductorPage } from '../productor/productor';
 import { Usuario } from '../../models/usuario';
@@ -50,7 +48,7 @@ export interface Productor{
 @Component({
   selector: 'page-my-wine-form',
   templateUrl: 'my-wine-form.html',
-  providers: [UvasProvider, MarcaProvider, ProductoresProvider],
+  providers: [UvasProvider,  ProductoresProvider],
 })
 export class MyWineFormPage implements OnInit {
 
@@ -60,7 +58,6 @@ export class MyWineFormPage implements OnInit {
     { id:2, title:"Roble Americano", description:"Aumenta el sabor", image:"assets/img/roble_americano.jpg"}
   ];
   public productores: Productor[];
-  public marcas : Marca[]
   public usuario: Usuario;
 
   constructor(
@@ -68,14 +65,12 @@ export class MyWineFormPage implements OnInit {
     public navParams: NavParams,
     private uvasProvider: UvasProvider,
     private productoresProvider:ProductoresProvider,
-    private marcaProvider:MarcaProvider,
     private storage: Storage,
     public alertCtrl: AlertController,
   ) {
     this.uvas = [];
     // this.barricas = [];
     this.productores = [];
-    this.marcas = [];
     this.usuario = navParams.get('usuario');
     
   }
@@ -122,24 +117,8 @@ export class MyWineFormPage implements OnInit {
     this.navCtrl.push(ProductorPage,{productor:productor,usuario:this.usuario});
   }
 
-  getMarcas(productor:any){
-    console.log(productor);
-    this.marcas = [];
-    this.marcaProvider.getMarcas().subscribe(res=>{
-      // this.marcas = res.marcas;
-      res.marcas.forEach(element => {
-        if (element.vinicola_id == productor.id) {
-          this.marcas.push(element);
-        }
-      });
-      console.log(this.marcas);
-    });
-  }
-  marcaDetail(marca:Marca){
-    console.log(marca);
-    console.log(this.usuario);
-    this.navCtrl.push(MarcaPage,{marca:marca,usuario:this.usuario});
-  }
+  
+
   barricaDetail(barrica:Barrica){
     console.log(barrica);
     this.navCtrl.push(BarricaPage,{barrica:barrica})

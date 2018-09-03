@@ -1,9 +1,11 @@
+import { BarricaProvider } from './../../providers/barrica/barrica';
+import { Storage } from '@ionic/storage';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { Marca } from '../../models/marca';
 import { Usuario } from "../../models/usuario";
+
 /**
- * Generated class for the MarcaPage page.
+ * Generated class for the ProductosPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,24 +13,39 @@ import { Usuario } from "../../models/usuario";
 
 @IonicPage()
 @Component({
-  selector: 'page-marca',
-  templateUrl: 'marca.html',
+  selector: 'page-productos',
+  templateUrl: 'productos.html',
+  providers: [BarricaProvider]
 })
-export class MarcaPage implements OnInit {
-  public marca: Marca;
+export class ProductosPage implements OnInit {
+  public barrica: any[];
   public usuario: Usuario;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
-    // this.marca = navParams.get('marca');
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public alertCtrl:AlertController,
+    private storage: Storage,
+    private barricaProvider: BarricaProvider,
+  ) {
   }
+  
   ngOnInit(){
-    this.marca = this.navParams.get('marca');
-    this.usuario = this.navParams.get('usuario');
-    console.log(this.marca);
+    let barr_view = this.navParams.get("barrica");
+    this.storage.get('access_token').then(val=>{
+      let token = JSON.parse(val);
+      this.barricaProvider.getBarrica(barr_view['id'],token).subscribe(res=>{
+        this.barrica = res.barrica;
+        console.log(this.barrica);
+      },err=>{});
+    });
+    this.usuario = this.navParams.get("usuario");
   }
-  verProductor(vinicola){
+
+  verProductor(vinicola) {
     let alert = this.alertCtrl.create({
       title: `${vinicola.nombre}`,
-      message: `<ion-card>
+      message:
+      `<ion-card>
     <ion-card-content>
       <p>
         <strong>Vinicola : ${vinicola.nombre}</strong>  
@@ -36,7 +53,7 @@ export class MarcaPage implements OnInit {
       <p>
         <strong>Desde : ${vinicola.inicio}</strong> 
       </p>
-      ${vinicola.distinciones != null ? '<p><strong> Distinciones : '+vinicola.distinciones+'</strong></p>' : ''} 
+      ${vinicola.distinciones != null ? '<p><strong> Distinciones : ' + vinicola.distinciones + '</strong></p>' : ''} 
       <p>
         <strong>Nuestra Filosofia : ${vinicola.filosofia}</strong> 
       </p>
@@ -48,7 +65,6 @@ export class MarcaPage implements OnInit {
       ${vinicola.wine_maker != null ? '<p><strong> Nuestro Wine Maker : ' + vinicola.wine_maker + '</strong></p>' : ''} 
       
     </ion-card-content>
-
   </ion-card>`,
       buttons: ['OK']
     });
@@ -56,7 +72,7 @@ export class MarcaPage implements OnInit {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MarcaPage');
+    console.log('ionViewDidLoad ProductosPage');
   }
 
 }
