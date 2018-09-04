@@ -1,0 +1,20 @@
+export interface bodega{
+    celular:number;
+    comentarios:string;
+    contacto:string;
+    correo:string;
+    descripcion:string;    
+    enologo_id:number;
+    id:number;
+    lat:number;
+    locacion:string;
+    logo:string;
+    long:number;
+    marcas:string;
+    nombre:string;
+    productora:number;
+    puesto:string;
+    telefono:string;
+    vista:string;
+    wine_maker_id:number;
+}

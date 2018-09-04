@@ -14,19 +14,44 @@
 
 
 <ion-content padding>
-  <ion-row class="placa">
-  <ion-label>Barrica {{barrica.tipo_bar}}<br>por<br>{{barrica.bodega.nombre}}<br>{{ usuario.nombre | titlecase }} {{ usuario.apaterno | titlecase }} {{ usuario.amaterno | titlecase }}</ion-label>
-  <ion-label>{{barrica.enologo.tipo}} {{barrica.enologo.nombre}} {{barrica.enologo.paterno}} {{barrica.enologo.materno}}</ion-label>
-  </ion-row>
+  <!-- {{barrica.tipo_bar}} -->
+  <ion-grid class="placa">
+    <ion-row style="margin-top: 30px">
+      <ion-col text-center>
+        Barrica {{barrica?.tipo_bar}} ° Uva {{barrica?.uva}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        {{ usuario?.nombre | titlecase }} {{ usuario?.apaterno | titlecase }} {{ usuario?.amaterno | titlecase }}
+      </ion-col> 
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        {{enologo?.tipo}} {{enologo?.nombre}} {{enologo?.paterno}} {{enologo?.materno}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-card>
 
     <ion-card-header>
       Descripción:
     </ion-card-header>
     <ion-card-content>
-      {{ barrica.vinicola.tipo }}: {{barrica.vinicola.nombre}}
+      <p>{{vinicola?.tipo}} {{ vinicola?.nombre | titlecase }}</p>
+      <blockquote>
+        <q>
+          {{vinicola?.filosofia}}
+        </q>
+      </blockquote>
+      <p>Bodega: {{ bodega?.nombre| titlecase }}</p>
+      <blockquote>
+        <q>
+          {{bodega?.descripcion }}
+        </q>
+      </blockquote>
     </ion-card-content>
 
   </ion-card>
-  <button ion-button color="uva" full (click)="verProductor(barrica.vinicola)">Ver Productor</button>
+  <button ion-button color="uva" full (click)="verProductor(vinicola)">Más información {{ vinicola?.tipo == 'Vinicola' ? 'de la '+vinicola?.tipo : 'del '+vinicola?.tipo}}</button>
 </ion-content>

@@ -7,20 +7,19 @@ page-productos {
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: unset;
-    background-size: contain;
-    height: 200px;
-    width: 100%;
+    background-size: contain,cover;
+    height: 30%;
   }
-  ion-label{
-    color: black;
-    font-size: 1.5rem;
-    text-align: center;
-    margin-top: 65px !important;
-    // margin-right: 24px !important;
-    margin-bottom: 30px !important;
-    // margin-left: 24px !important;
-    // background-color: black;
-  }
+  // ion-row{
+  //   color: black;
+  //   font-size: 1.5rem;
+  //   text-align: center;
+  //   margin-top: 65px !important;
+  //   // margin-right: 24px !important;
+  //   margin-bottom: 30px !important;
+  //   // margin-left: 24px !important;
+  //   // background-color: black;
+  // }
   ion-card{
     background: rgba(255,255,255,0);
   }

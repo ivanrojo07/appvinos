@@ -1,6 +1,10 @@
+import { vinicola } from './../../models/vinicola';
+import { enologo } from './../../models/enologo';
+import { bodega } from './../../models/bodega';
+import { barrica } from './../../models/barrica';
 import { BarricaProvider } from './../../providers/barrica/barrica';
 import { Storage } from '@ionic/storage';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Usuario } from "../../models/usuario";
 
@@ -18,7 +22,10 @@ import { Usuario } from "../../models/usuario";
   providers: [BarricaProvider]
 })
 export class ProductosPage implements OnInit {
-  public barrica: any[];
+  public barrica: barrica;
+  public bodega: bodega;
+  public enologo: enologo;
+  public vinicola:vinicola;
   public usuario: Usuario;
   constructor(
     public navCtrl: NavController, 
@@ -27,6 +34,10 @@ export class ProductosPage implements OnInit {
     private storage: Storage,
     private barricaProvider: BarricaProvider,
   ) {
+    // this.barrica={};
+    // this.bodega={};
+    // this.enologo={};
+    // this.vinicola={};
   }
   
   ngOnInit(){
@@ -36,6 +47,12 @@ export class ProductosPage implements OnInit {
       this.barricaProvider.getBarrica(barr_view['id'],token).subscribe(res=>{
         this.barrica = res.barrica;
         console.log(this.barrica);
+        this.bodega=this.barrica.bodega;
+        console.log(this.bodega);
+        this.enologo=this.barrica.enologo;
+        console.log(this.enologo);
+        this.vinicola=this.barrica.vinicola;
+        console.log(this.vinicola);
       },err=>{});
     });
     this.usuario = this.navParams.get("usuario");
