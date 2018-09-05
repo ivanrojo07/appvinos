@@ -4,7 +4,7 @@ import { bodega } from './../../models/bodega';
 import { barrica } from './../../models/barrica';
 import { BarricaProvider } from './../../providers/barrica/barrica';
 import { Storage } from '@ionic/storage';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Usuario } from "../../models/usuario";
 
@@ -27,6 +27,7 @@ export class ProductosPage implements OnInit {
   public enologo: enologo;
   public vinicola:vinicola;
   public usuario: Usuario;
+  private currentNumber = 1;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -65,7 +66,7 @@ export class ProductosPage implements OnInit {
       `<ion-card>
     <ion-card-content>
       <p>
-        <strong>Vinicola : ${vinicola.nombre}</strong>  
+        <strong>${vinicola.tipo} : ${vinicola.nombre}</strong>  
       </p>
       <p>
         <strong>Desde : ${vinicola.inicio}</strong> 
@@ -90,6 +91,17 @@ export class ProductosPage implements OnInit {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductosPage');
+  }
+
+  private increment () {
+    this.currentNumber++;
+  }
+
+  private decrement () {
+    if(this.currentNumber >1){
+      this.currentNumber--;
+
+    }
   }
 
 }

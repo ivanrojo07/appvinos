@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content full-padding>
   <!-- {{barrica.tipo_bar}} -->
   <ion-grid class="placa">
     <ion-row style="margin-top: 30px">
@@ -53,5 +53,21 @@
     </ion-card-content>
 
   </ion-card>
-  <button ion-button color="uva" full (click)="verProductor(vinicola)">Más información {{ vinicola?.tipo == 'Vinicola' ? 'de la '+vinicola?.tipo : 'del '+vinicola?.tipo}}</button>
+  <!-- <button ion-button color="uva" full (click)="verProductor(vinicola)">Más información {{ vinicola?.tipo == 'Vinicola' ? 'de la '+vinicola?.tipo : 'del '+vinicola?.tipo}}</button> -->
+  <ion-item color="uva">
+    <ion-label>
+      <button ion-button clear color="light" icon-only (click)="decrement()">
+        <ion-icon name="remove-circle"></ion-icon>
+      </button>
+      {{currentNumber}}
+      <button ion-button clear color="light" icon-only (click)="increment()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-label>
+    <ion-label>
+      $ {{barrica?.precio_venta*currentNumber | number : '1.2-2'}} USD
+    </ion-label>
+    <!-- <ion-label item-end>{{barrica?.precio_venta}}</ion-label> -->
+  </ion-item>
+  <button ion-button block round>Comprar</button>
 </ion-content>

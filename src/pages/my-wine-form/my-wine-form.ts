@@ -1,42 +1,13 @@
+import { SellProvider } from './../../providers/sell/sell';
 import { UvaPage } from './../uva/uva';
 import { NgForm } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ProductoresProvider, UvasProvider } from '../../providers/providers';
 import { Storage } from "@ionic/storage";
 import { ProductorPage } from '../productor/productor';
 import { Usuario } from '../../models/usuario';
 import { BarricaPage } from '../barrica/barrica';
-
-export interface Barrica{
-  id: number,
-  title: string,
-  description: string,
-  image: string,
-}
-export interface Uva{
-  id: number,
-  title: string,
-  subtitle: string,
-  image: string,
-  olfato: string,
-  gusto: string,
-  vista: string,
-  maridaje: string,
-}
-export interface Productor{
-  id: number,
-  nombre:string,
-  distinciones:string,
-  inicio:string,
-  filosofia:string,
-  locacion:string,
-  enologo:string,
-  wine_maker:string,
-  long:number,
-  lat:number,
-  telefono:number,
-}
 /**
  * Generated class for the MyWineFormPage page.
  *
@@ -48,17 +19,18 @@ export interface Productor{
 @Component({
   selector: 'page-my-wine-form',
   templateUrl: 'my-wine-form.html',
-  providers: [UvasProvider,  ProductoresProvider],
+  providers: [UvasProvider,  ProductoresProvider, SellProvider],
 })
 export class MyWineFormPage implements OnInit {
+  @ViewChild('formMiVino')form:NgForm;
 
-  public uvas : Uva[];
-  public barricas : Barrica[]=[
-    { id: 1, title:"Roble Frances", description:"Aromatico", image:"assets/img/roble_frances.jpg"  },
-    { id:2, title:"Roble Americano", description:"Aumenta el sabor", image:"assets/img/roble_americano.jpg"}
-  ];
-  public productores: Productor[];
   public usuario: Usuario;
+  public uvas: any[];
+  public productores:any[];
+  public tipo_barrs: any[];
+  public tostados: any[];
+  public barricas : number;
+  
 
   constructor(
     public navCtrl: NavController, 
@@ -67,33 +39,59 @@ export class MyWineFormPage implements OnInit {
     private productoresProvider:ProductoresProvider,
     private storage: Storage,
     public alertCtrl: AlertController,
+    private sellProvider:SellProvider,
   ) {
-    this.uvas = [];
-    // this.barricas = [];
-    this.productores = [];
     this.usuario = navParams.get('usuario');
+    this.uvas=[]
+    this.productores=[];
+    this.tipo_barrs=[
+      {tipo_bar: 'Americana'},
+      { tipo_bar: 'Bosques de europa central' },
+      { tipo_bar: 'Europeo' }
+    ];
+    this.tostados = [
+      {tipo: 'Alto'},
+      {tipo: 'Medio'},
+      {tipo: 'ligero'}
+    ];
+    this.barricas = 0;
     
   }
   ngOnInit(){
+    this.onChanges();
     this.getUvas();
     this.getProductores();
-    
+    console.log(this.form.value);
+  }
+  onChanges(){
+    this.form.valueChanges.subscribe(val=>{
+      let params = val;
+      this.storage.get('access_token').then(val => {
+        let token = JSON.parse(val);
+        this.sellProvider.myWineForm(params, token).subscribe(res => {
+          this.barricas = res.barricas.length;
+          console.log(this.barricas);
+        }, err => {
+          console.log(err);
+        })
+      })
+    })
   }
   onSubmit(form:NgForm){
-    console.log(form.value);
-    if (form.valid) {
-      this.alert('Creado', 'Tú orden se ha hecho');
-      this.navCtrl.pop();
-    } else {
+    // console.log(form.value);
+    // if (form.valid) {
+    //   this.alert('Creado', 'Tú orden se ha hecho');
+    //   this.navCtrl.pop();
+    // } else {
       
-    }
+    // }
   }
   regresar(){
     this.navCtrl.pop();
   }
   getUvas(){
     this.uvasProvider.getUvas().subscribe(res=>{
-      // console.log(res.uvas);
+      console.log(res.uvas);
       this.uvas = res.uvas;
     },error=>{
       console.log(error);
@@ -102,13 +100,12 @@ export class MyWineFormPage implements OnInit {
   uvaDetail(uva){
     console.log(uva);
     this.navCtrl.push(UvaPage,{uva:uva});
-    // const modal = this.modalCtrl.create(UvaPage,{uva:uva});
-    // modal.present();
+    
   }
   getProductores(){
     this.productoresProvider.getProductores().subscribe(res=>{
       this.productores = res.vinicolas;
-      // console.log(this.productores);
+      console.log(this.productores);
       
     })
   }
@@ -119,10 +116,10 @@ export class MyWineFormPage implements OnInit {
 
   
 
-  barricaDetail(barrica:Barrica){
-    console.log(barrica);
-    this.navCtrl.push(BarricaPage,{barrica:barrica})
-  }
+  // barricaDetail(barrica:Barrica){
+  //   console.log(barrica);
+  //   this.navCtrl.push(BarricaPage,{barrica:barrica})
+  // }
   alert(titulo: string, contenido: string) {
     let alert = this.alertCtrl.create({
       title: titulo,

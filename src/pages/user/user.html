@@ -10,7 +10,7 @@
       <ion-icon></ion-icon>
       <!-- <ion-icon></ion-icon> -->
     </button>
-    <ion-title>{{ usuario.nombre | titlecase }} {{ usuario.apaterno | titlecase }} {{ usuario.amaterno | titlecase }} </ion-title>
+    
     <ion-buttons end>
       <button ion-button color="primary" outline item-end icon-start (click)="abrirForm()">
         <ion-icon name="wine"></ion-icon>
@@ -22,8 +22,9 @@
 
 
 <ion-content padding>
-  <div class="splash-bg"></div>
-  
+  <ion-col text-center>
+    <ion-title>{{ usuario.nombre | titlecase }} {{ usuario.apaterno | titlecase }} {{ usuario.amaterno | titlecase }} </ion-title>
+  </ion-col>
   <ion-row style="background-color:rgba(163, 133, 64, 0.613)" *ngFor="let barrica of barricas; let i =index" (click)="openBarrica(barrica)">
     <ion-col col-6 class="barril" >
     </ion-col>
@@ -31,7 +32,7 @@
       <p>Barrica: {{barrica.tipo_bar}}</p>
       <p>Tostado: {{barrica.tostado}}</p>
       <p>Uva: {{barrica.uva}}</p>
-      <p>Precio: $ {{barrica.precio_venta}} USD</p>
+      <p>Precio: ${{barrica.precio_venta}}USD</p>
     </ion-col>
   </ion-row>
 

@@ -53,6 +53,7 @@ import { ProductorPage } from '../pages/productor/productor';
 import { PuntosCorchosProvider } from '../providers/puntos-corchos/puntos-corchos';
 import { PuntosPage } from '../pages/puntos/puntos';
 import { BarricaProvider } from '../providers/barrica/barrica';
+import { SellProvider } from '../providers/sell/sell';
 
 @NgModule({
   declarations: [
@@ -143,6 +144,7 @@ import { BarricaProvider } from '../providers/barrica/barrica';
     SocialSharing,
     PuntosCorchosProvider,
     BarricaProvider,
+    SellProvider,
     
   ]
 })

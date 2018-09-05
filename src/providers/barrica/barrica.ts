@@ -38,4 +38,5 @@ export class BarricaProvider {
     return this.http.get(this.url+'/'+barrica_id,{headers:headers}).map(res=>res.json());
   }
 
+  
 }
