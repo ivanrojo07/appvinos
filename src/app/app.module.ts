@@ -54,6 +54,8 @@ import { PuntosCorchosProvider } from '../providers/puntos-corchos/puntos-corcho
 import { PuntosPage } from '../pages/puntos/puntos';
 import { BarricaProvider } from '../providers/barrica/barrica';
 import { SellProvider } from '../providers/sell/sell';
+import { BodegaProvider } from '../providers/bodega/bodega';
+import { ProductoPage } from '../pages/producto/producto';
 
 @NgModule({
   declarations: [
@@ -87,6 +89,7 @@ import { SellProvider } from '../providers/sell/sell';
     PuntosPage,
     MapPage,
     ProductosPage,
+    ProductoPage,
   ],
   imports: [
     BrowserModule,
@@ -128,6 +131,7 @@ import { SellProvider } from '../providers/sell/sell';
     PuntosPage,
     MapPage,
     ProductosPage,
+    ProductoPage,
     
   ],
   providers: [
@@ -145,6 +149,7 @@ import { SellProvider } from '../providers/sell/sell';
     PuntosCorchosProvider,
     BarricaProvider,
     SellProvider,
+    BodegaProvider,
     
   ]
 })

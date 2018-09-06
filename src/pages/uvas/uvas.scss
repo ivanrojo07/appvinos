@@ -56,8 +56,8 @@ page-uvas {
 
   // }
   .bar-buttons,
-  .toolbar-title {
-    color: #fff;
+  .toolbar-title,.button-inner {
+    color: #fff !important;
   }
   // img {
   //   float: left;

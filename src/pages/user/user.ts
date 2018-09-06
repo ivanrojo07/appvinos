@@ -5,7 +5,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Usuario } from '../../models/usuario';
 import { UsuarioServiceProvider } from '../../providers/providers';
 import { Storage } from '@ionic/storage';
-import { ProductosPage } from '../productos/productos';
+import { ProductoPage } from '../producto/producto';
 
 /**
  * Generated class for the UserPage page.
@@ -20,7 +20,7 @@ import { ProductosPage } from '../productos/productos';
   templateUrl: 'user.html',
   providers: [UsuarioServiceProvider, BarricaProvider]
 })
-export class UserPage {
+export class UserPage implements OnInit {
 
   public usuario: Usuario;
   public access_token: string;
@@ -75,7 +75,7 @@ export class UserPage {
   }
 
   openBarrica(barrica){
-    this.navCtrl.push(ProductosPage, { barrica: barrica, usuario: this.usuario });
+    this.navCtrl.push(ProductoPage, { barrica: barrica, usuario:this.usuario });
   }
 
   

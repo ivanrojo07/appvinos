@@ -1,3 +1,5 @@
+import { BodegaProvider } from './bodega/bodega';
+import { SellProvider } from './sell/sell';
 import { UsuarioServiceProvider } from './usuario-service/usuario-service';
 import { TarjetaProvider } from './tarjeta/tarjeta';
 import { DomicilioFiscalProvider } from './domicilio-fiscal/domicilio-fiscal';
@@ -16,4 +18,6 @@ export{
     UvasProvider,
     PuntosCorchosProvider,
     BarricaProvider,
+    SellProvider,
+    BodegaProvider,
 };

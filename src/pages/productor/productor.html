@@ -18,12 +18,20 @@
 
     <ion-slide>
       <ion-card>
+        <ion-img width="80" height="80" style="margin-top:25px !important;" item-center *ngIf="productor.logo" src="http://byw.from-tn.com/pwm/storage/{{productor.logo}}">
+        </ion-img>
         <ion-card-header>
           <strong>Filosofia:</strong>
         </ion-card-header>
-        <ion-card-content>
+        <ion-card-content *ngIf="productor.filosofia">
           {{productor.filosofia}}
+          
         </ion-card-content>
+        <ion-card-content *ngIf="productor.descripcion">
+          {{productor.descripcion}}
+        </ion-card-content>
+        <ion-img width="250" height="250" item-center *ngIf="productor.vista" src="http://byw.from-tn.com/pwm/storage/{{productor.vista}}">
+        </ion-img>
       </ion-card>
     </ion-slide>
 
@@ -38,7 +46,18 @@
       </ion-card>
     </ion-slide>
 
-    <ion-slide>
+    <ion-slide *ngIf="productor.marcas">
+      <ion-card>
+        <ion-card-header>
+          <strong>Marcas:</strong>
+        </ion-card-header>
+        <ion-card-content>
+          {{productor.marcas}}
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide *ngIf="productor.inicio">
       <ion-card>
         <ion-card-header>
           <strong>Año de inicio:</strong>

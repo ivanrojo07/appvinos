@@ -1,0 +1,32 @@
+page-producto {
+    .bar-buttons,
+    .toolbar-title,.button-inner {
+        color: #fff !important;
+        // margin-top:-22px !important;
+    }
+  .placa{
+    background-image: url(../assets/img/placa.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: unset;
+    background-size: contain,cover;
+    height: 30%;
+  }
+  // ion-row{
+  //   color: black;
+  //   font-size: 1.5rem;
+  //   text-align: center;
+  //   margin-top: 65px !important;
+  //   // margin-right: 24px !important;
+  //   margin-bottom: 30px !important;
+  //   // margin-left: 24px !important;
+  //   // background-color: black;
+  // }
+  ion-card{
+    background: rgba(255,255,255,0);
+  }
+  .bar-button {
+    color: #fff;
+  }
+  
+}

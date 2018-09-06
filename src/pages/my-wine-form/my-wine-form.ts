@@ -1,5 +1,7 @@
-import { SellProvider } from './../../providers/sell/sell';
-import { UvaPage } from './../uva/uva';
+import { ProductosPage } from './../productos/productos';
+import { BodegaProvider } from './../../providers/providers';
+import { SellProvider } from './../../providers/providers';
+import { UvasPage } from './../uvas/uvas';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
@@ -19,7 +21,7 @@ import { BarricaPage } from '../barrica/barrica';
 @Component({
   selector: 'page-my-wine-form',
   templateUrl: 'my-wine-form.html',
-  providers: [UvasProvider,  ProductoresProvider, SellProvider],
+  providers: [UvasProvider,  ProductoresProvider, SellProvider, BodegaProvider],
 })
 export class MyWineFormPage implements OnInit {
   @ViewChild('formMiVino')form:NgForm;
@@ -30,7 +32,7 @@ export class MyWineFormPage implements OnInit {
   public tipo_barrs: any[];
   public tostados: any[];
   public barricas : number;
-  
+  public bodegas: any[];
 
   constructor(
     public navCtrl: NavController, 
@@ -40,6 +42,7 @@ export class MyWineFormPage implements OnInit {
     private storage: Storage,
     public alertCtrl: AlertController,
     private sellProvider:SellProvider,
+    private bodegaProvider:BodegaProvider,
   ) {
     this.usuario = navParams.get('usuario');
     this.uvas=[]
@@ -61,7 +64,8 @@ export class MyWineFormPage implements OnInit {
     this.onChanges();
     this.getUvas();
     this.getProductores();
-    console.log(this.form.value);
+    this.getBodegas();
+    // console.log(this.form.value);
   }
   onChanges(){
     this.form.valueChanges.subscribe(val=>{
@@ -79,6 +83,15 @@ export class MyWineFormPage implements OnInit {
   }
   onSubmit(form:NgForm){
     // console.log(form.value);
+    let params = form.value;
+    this.storage.get('access_token').then(val => {
+      let token = JSON.parse(val);
+      this.sellProvider.myWineForm(params, token).subscribe(res => {
+        this.navCtrl.push(ProductosPage,{'barricas':res.barricas});
+      }, err => {
+        console.log(err);
+      })
+    })
     // if (form.valid) {
     //   this.alert('Creado', 'Tú orden se ha hecho');
     //   this.navCtrl.pop();
@@ -97,9 +110,8 @@ export class MyWineFormPage implements OnInit {
       console.log(error);
     });
   }
-  uvaDetail(uva){
-    console.log(uva);
-    this.navCtrl.push(UvaPage,{uva:uva});
+  uvasDetail(){
+    this.navCtrl.push(UvasPage);
     
   }
   getProductores(){
@@ -112,6 +124,14 @@ export class MyWineFormPage implements OnInit {
   productorDetail(productor){
     console.log(productor);
     this.navCtrl.push(ProductorPage,{productor:productor,usuario:this.usuario});
+  }
+  getBodegas(){
+    this.bodegaProvider.getBodegas().subscribe(res=>{
+      console.log(res);
+      this.bodegas = res.bodegas;
+    },err=>{
+      console.log(err)
+    });
   }
 
   
