@@ -32,7 +32,7 @@
       <p>Barrica: {{barrica.tipo_bar}}</p>
       <p>Tostado: {{barrica.tostado}}</p>
       <p>Uva: {{barrica.uva}}</p>
-      <p>Precio: ${{barrica.precio_venta}}USD</p>
+      <p>Precio: ${{barrica.precio_publico != 0 ? barrica.precio_publico : barrica.precio_venta }}USD</p>
     </ion-col>
   </ion-row>
 

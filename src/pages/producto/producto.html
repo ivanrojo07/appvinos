@@ -16,7 +16,7 @@
 <ion-content full-padding>
   <!-- {{barrica.tipo_bar}} -->
   <ion-grid class="placa">
-    <ion-row style="margin-top: 30px">
+    <ion-row>
       <ion-col text-center>
         Barrica {{barrica?.tipo_bar}} ° Uva {{barrica?.uva}}
       </ion-col>
@@ -59,13 +59,19 @@
       <button ion-button clear color="light" icon-only (click)="decrement()">
         <ion-icon name="remove-circle"></ion-icon>
       </button>
-      {{currentNumber}}
+      <ion-col align-self-center style="top: 4px !important;">
+        {{currentNumber}}
+
+      </ion-col>
       <button ion-button clear color="light" icon-only (click)="increment()">
         <ion-icon name="add-circle"></ion-icon>
       </button>
     </ion-label>
-    <ion-label>
+    <ion-label *ngIf="barrica?.precio_publico == 0" >
       $ {{barrica?.precio_venta*currentNumber | number : '1.2-2'}} USD
+    </ion-label>
+    <ion-label *ngIf="barrica?.precio_publico != 0">
+      $ {{barrica?.precio_publico*currentNumber | number : '1.2-2'}} USD
     </ion-label>
     <!-- <ion-label item-end>{{barrica?.precio_venta}}</ion-label> -->
   </ion-item>

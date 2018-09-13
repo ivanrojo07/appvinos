@@ -1,13 +1,9 @@
 import { ProductosPage } from './../productos/productos';
-import { BodegaProvider } from './../../providers/providers';
 import { SellProvider } from './../../providers/providers';
 import { UvasPage } from './../uvas/uvas';
-import { NgForm } from '@angular/forms';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { ProductoresProvider, UvasProvider } from '../../providers/providers';
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from "@ionic/storage";
-import { ProductorPage } from '../productor/productor';
 import { Usuario } from '../../models/usuario';
 import { BarricaPage } from '../barrica/barrica';
 /**
@@ -21,17 +17,14 @@ import { BarricaPage } from '../barrica/barrica';
 @Component({
   selector: 'page-my-wine-form',
   templateUrl: 'my-wine-form.html',
-  providers: [UvasProvider,  ProductoresProvider, SellProvider, BodegaProvider],
+  providers: [SellProvider],
 })
 export class MyWineFormPage implements OnInit {
-  // @ViewChild('formMiVino')form:NgForm;
 
   public usuario: Usuario;
   public uvas: any[];
-  // public productores:any[];
   public tipo_barrs: any[];
   public tostados: any[];
-  // public barricas : number;
   public bodegas: any[];
   public bodega:any[];
   public selects: any[];
@@ -40,29 +33,21 @@ export class MyWineFormPage implements OnInit {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private uvasProvider: UvasProvider,
-    private productoresProvider:ProductoresProvider,
     private storage: Storage,
-    public alertCtrl: AlertController,
     private sellProvider:SellProvider,
-    private bodegaProvider:BodegaProvider,
   ) {
     this.usuario = navParams.get('usuario');
     this.form = {uva:'',bodega_id:'',tipo_bar:'', tostado:''};
     this.selects = [
-      { nombre: 'uva', value: false, select: false }, 
-      { nombre: 'barrica', value: false, select: false },
-      { nombre: 'bodega', value: false, select: false }
+      { nombre: 'uva', img: "assets/img/opcion1.jpg", value: false, select: false }, 
+      { nombre: 'barrica', img:"assets/img/barricas.jpeg", value: false, select: false },
+      { nombre: 'bodega', img:'assets/img/botellas.jpeg', value: false, select: false }
     ];
     this.bodegas = [];
     this.bodega=[];
   }
   ngOnInit(){
     this.onChanges();
-    // this.getUvas();
-    // this.getProductores();
-    // this.getBodegas();
-    // console.log(this.form);
   }
   seleccionar(select){
     this.selects.forEach(select => {
@@ -116,70 +101,23 @@ export class MyWineFormPage implements OnInit {
         this.navCtrl.push(ProductosPage,{'barricas':res.barricas});
       }, err => {
         console.log(err);
-      })
-    })
-    if (form.valid) {
-      this.alert('Creado', 'Tú orden se ha hecho');
-      this.navCtrl.pop();
-    } else {
-      
-    }
+      });
+    });
   }
   cancelar(){
     this.form = { uva: '', bodega_id: '', tipo_bar: '', tostado: '' };
     this.selects = [
-      { nombre: 'uva', value: false, select: false },
-      { nombre: 'barrica', value: false, select: false },
-      { nombre: 'bodega', value: false, select: false }
+      { nombre: 'uva', img: "assets/img/opcion1.jpg", value: false, select: false },
+      { nombre: 'barrica', img: "assets/img/barricas.jpeg", value: false, select: false },
+      { nombre: 'bodega', img: 'assets/img/botellas.jpeg', value: false, select: false }
     ];
     this.bodega = [];
   }
-  // getUvas(){
-  //   this.uvasProvider.getUvas().subscribe(res=>{
-  //     console.log(res.uvas);
-  //     this.uvas = res.uvas;
-  //   },error=>{
-  //     console.log(error);
-  //   });
-  // }
+
   uvasDetail(){
     this.navCtrl.push(UvasPage);
-    
   }
-  // getProductores(){
-  //   this.productoresProvider.getProductores().subscribe(res=>{
-  //     this.productores = res.vinicolas;
-  //     console.log(this.productores);
-      
-  //   })
-  // }
-  // productorDetail(productor){
-  //   console.log(productor);
-  //   this.navCtrl.push(ProductorPage,{productor:productor,usuario:this.usuario});
-  // }
-  // getBodegas(){
-  //   this.bodegaProvider.getBodegas().subscribe(res=>{
-  //     console.log(res);
-  //     this.bodegas = res.bodegas;
-  //   },err=>{
-  //     console.log(err)
-  //   });
-  // }
 
-  
-
-  // barricaDetail(barrica:Barrica){
-  //   console.log(barrica);
-  //   this.navCtrl.push(BarricaPage,{barrica:barrica})
-  // }
-  alert(titulo: string, contenido: string) {
-    let alert = this.alertCtrl.create({
-      title: titulo,
-      subTitle: contenido,
-      buttons: ['OK']
-    });
-    alert.present();
-  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyWineFormPage');
   }

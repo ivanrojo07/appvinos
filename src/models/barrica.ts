@@ -16,6 +16,7 @@ export interface barrica{
     id:number;
     meses_barrica:number;
     meses_estabilizacion:number;
+    precio_publico: number;
     precio_venta: number;
     tipo_bar:string;
     tostado:string;

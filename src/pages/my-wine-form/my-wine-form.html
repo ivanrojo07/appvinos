@@ -20,6 +20,9 @@
     <ion-card-content>
       <ion-list inset>
         <button ion-item *ngFor="let select of selects" [disabled]="select.value" (click)="seleccionar(select)">
+          <ion-avatar item-start>
+            <img [src]="select.img">
+          </ion-avatar>
           {{select.nombre}}
         </button>
       </ion-list>
@@ -39,7 +42,6 @@
         <ion-item *ngFor="let uva of uvas">
           <ion-label>{{uva}}</ion-label>
           <ion-radio   value="{{uva}}" (click)=setUva(uva)></ion-radio>
-          <!-- <button ion-button clear item-end (click)="uvaDetail(uva)">Detalles</button> -->
         </ion-item>
         <ion-item>
           <button ion-button clear item-end (click)="uvasDetail()">Más información sobre las uvas</button>
@@ -55,7 +57,6 @@
         <ion-item *ngFor="let barrica of tipo_barrs">
           <ion-label>{{barrica}}</ion-label>
           <ion-radio value="{{barrica}}" (click)=setBarrica(barrica)></ion-radio>
-          <!-- <button ion-button clear item-end (click)="uvaDetail(uva)">Detalles</button> -->
         </ion-item>
       </ion-list>
       <br>
@@ -64,7 +65,6 @@
         <ion-item *ngFor="let tostado of tostados">
           <ion-label>{{tostado}}</ion-label>
           <ion-radio value="{{tostado}}" (click)=setTostado(tostado)></ion-radio>
-          <!-- <button ion-button clear item-end (click)="uvaDetail(uva)">Detalles</button> -->
         </ion-item>
       </ion-list>
     </ion-card-content>

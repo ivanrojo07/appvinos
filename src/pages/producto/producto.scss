@@ -12,6 +12,16 @@ page-producto {
     background-size: contain,cover;
     height: 30%;
   }
+  .grid {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    padding: 50px;
+  }
   // ion-row{
   //   color: black;
   //   font-size: 1.5rem;
