@@ -3,7 +3,7 @@
     <name>PWM®</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.1.69:8100" />
+    <content original-src="index.html" src="http://192.168.1.68:8100" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
     <allow-intent href="http://*/*" />
@@ -96,5 +96,6 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <allow-navigation href="http://192.168.1.72:8100" />
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.1" />
+    <allow-navigation href="http://192.168.1.68:8100" sessionid="fa99a6d3" />
     <engine name="android" spec="^6.1.2" />
 </widget>

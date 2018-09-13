@@ -8,59 +8,83 @@
 
   <ion-navbar>
     <ion-title>Crea tú propio vino </ion-title>
-    <ion-badge color="uva" item-end>{{barricas}} tipo(s) de barrica(s)</ion-badge>
   </ion-navbar>
-  
 
 </ion-header>
 
-<ion-content padding>
-  <form action="ngSubmit" #formMiVino="ngForm">
-    <ion-card>
-      <ion-item>
-        <ion-label>Seleccione su Uva:</ion-label>
-        <ion-select  ngModel name="uva" placeholder="Uvas" required>
-          <ion-option *ngFor="let uva of uvas" value="{{uva.title}}">{{uva.title}}</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <button ion-button clear item-end (click)="uvasDetail()">Más información sobre las uvas</button>
-      </ion-item>
-      <ion-item>
-        <ion-label>Seleccione su Barrica:</ion-label>
-        <ion-select ngModel name='tipo_bar' placeholder="Barricas" required>
-          <ion-option *ngFor="let barrica of tipo_barrs" [value]="barrica.tipo_bar">{{barrica.tipo_bar}}</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label>Seleccione el Tostado:</ion-label>
-        <ion-select ngModel name='tostado' placeholder="Tostado" required>
-          <ion-option *ngFor="let tostado of tostados" [value]="tostado.tipo">{{tostado.tipo}}</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-list radio-group ngModel name="vinicola_id" required>
-        <ion-list-header>Seleccione la Vinicola:</ion-list-header>
-        <ion-item *ngFor="let productor of productores">
-          <ion-label>{{productor.tipo}} {{productor.nombre}}</ion-label>
-          <ion-radio value="{{productor.id}}"></ion-radio>
-          <button ion-button clear item-end (click)="productorDetail(productor)">Detalles</button>
+<ion-content padding class="card-background-page">
+  <ion-card>
+    <ion-card-header>
+      ¿Cómo quiere seleccionar su vino?
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list inset>
+        <button ion-item *ngFor="let select of selects" [disabled]="select.value" (click)="seleccionar(select)">
+          {{select.nombre}}
+        </button>
+      </ion-list>
+      <ion-list >
+        <ion-item *ngIf="form.uva" >Uva: {{form.uva}}</ion-item>
+        <ion-item *ngIf="form.tipo_bar">Barrica: {{form.tipo_bar}}</ion-item>
+        <ion-item *ngIf="form.tostado">Tostado: {{form.tostado}}</ion-item>
+        <ion-item *ngIf="form.bodega_id">Bodega: {{bodega['nombre']}}</ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <br>
+  <ion-card *ngIf="selects[0].select && !selects[0].value">
+    <ion-card-content>
+      <ion-list radio-group name="uvas">
+        <ion-list-header>Seleccione su Uva:</ion-list-header>
+        <ion-item *ngFor="let uva of uvas">
+          <ion-label>{{uva}}</ion-label>
+          <ion-radio   value="{{uva}}" (click)=setUva(uva)></ion-radio>
+          <!-- <button ion-button clear item-end (click)="uvaDetail(uva)">Detalles</button> -->
+        </ion-item>
+        <ion-item>
+          <button ion-button clear item-end (click)="uvasDetail()">Más información sobre las uvas</button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="selects[1].select && !selects[1].value">
+    <ion-card-content>
+      <ion-list radio-group *ngIf="selects[1].select" name="barricas">
+        <ion-list-header>Seleccione su barrica:</ion-list-header>
+        <ion-item *ngFor="let barrica of tipo_barrs">
+          <ion-label>{{barrica}}</ion-label>
+          <ion-radio value="{{barrica}}" (click)=setBarrica(barrica)></ion-radio>
+          <!-- <button ion-button clear item-end (click)="uvaDetail(uva)">Detalles</button> -->
         </ion-item>
       </ion-list>
       <br>
-      <ion-list radio-group ngModel name="vinicola_id" required>
-        <ion-list-header>Seleccione la Bodega:</ion-list-header>
-        <ion-item *ngFor="let bodega of bodegas">
-          <ion-avatar item-start *ngIf="bodega.logo">
-            <img src="http://byw.from-tn.com/pwm/storage/{{bodega.logo}}">
-          </ion-avatar>
-          <ion-label>{{bodega.nombre}}</ion-label>
-          <ion-radio value="{{bodega.id}}"></ion-radio>
-          <button ion-button clear item-end (click)="productorDetail(bodega)">Detalles</button>
+      <ion-list radio-group *ngIf="selects[1].select && form.tipo_bar" name="tostado">
+        <ion-list-header>Seleccione su tostado:</ion-list-header>
+        <ion-item *ngFor="let tostado of tostados">
+          <ion-label>{{tostado}}</ion-label>
+          <ion-radio value="{{tostado}}" (click)=setTostado(tostado)></ion-radio>
+          <!-- <button ion-button clear item-end (click)="uvaDetail(uva)">Detalles</button> -->
         </ion-item>
       </ion-list>
-      
-    </ion-card>
-    <button ion-button color="primary" type="submit" (click)="onSubmit(formMiVino)"  block>Buscar</button>
-  </form>
-  <button ion-button color="light" (click)="regresar()" block>Cancelar</button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="selects[2].select && !selects[2].value">
+    <ion-card-content>
+      <ion-list radio-group name="bodegas">
+        <ion-list-header>Seleccione su Bodega:</ion-list-header>
+        <ion-item *ngFor="let bodega of bodegas">
+          <ion-avatar item-start>
+            <img src="http://byw.from-tn.com/pwm/storage/{{bodega.logo}}">
+          </ion-avatar>
+          <ion-label>
+            {{bodega.nombre}}
+          </ion-label>
+          <ion-radio value="{{bodega}}" (click)="setBodega(bodega)"></ion-radio>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <button ion-button color="primary" (click)="onSubmit(form)" block>Crear tu vino</button>
+  <button ion-button color="light" (click)="cancelar()" block>Cancelar</button>
 </ion-content>

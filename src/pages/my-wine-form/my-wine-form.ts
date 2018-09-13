@@ -24,15 +24,18 @@ import { BarricaPage } from '../barrica/barrica';
   providers: [UvasProvider,  ProductoresProvider, SellProvider, BodegaProvider],
 })
 export class MyWineFormPage implements OnInit {
-  @ViewChild('formMiVino')form:NgForm;
+  // @ViewChild('formMiVino')form:NgForm;
 
   public usuario: Usuario;
   public uvas: any[];
-  public productores:any[];
+  // public productores:any[];
   public tipo_barrs: any[];
   public tostados: any[];
-  public barricas : number;
+  // public barricas : number;
   public bodegas: any[];
+  public bodega:any[];
+  public selects: any[];
+  public form: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -45,45 +48,68 @@ export class MyWineFormPage implements OnInit {
     private bodegaProvider:BodegaProvider,
   ) {
     this.usuario = navParams.get('usuario');
-    this.uvas=[]
-    this.productores=[];
-    this.tipo_barrs=[
-      {tipo_bar: 'Americana'},
-      { tipo_bar: 'Bosques de europa central' },
-      { tipo_bar: 'Europeo' }
+    this.form = {uva:'',bodega_id:'',tipo_bar:'', tostado:''};
+    this.selects = [
+      { nombre: 'uva', value: false, select: false }, 
+      { nombre: 'barrica', value: false, select: false },
+      { nombre: 'bodega', value: false, select: false }
     ];
-    this.tostados = [
-      {tipo: 'Alto'},
-      {tipo: 'Medio'},
-      {tipo: 'ligero'}
-    ];
-    this.barricas = 0;
-    
+    this.bodegas = [];
+    this.bodega=[];
   }
   ngOnInit(){
     this.onChanges();
-    this.getUvas();
-    this.getProductores();
-    this.getBodegas();
-    // console.log(this.form.value);
+    // this.getUvas();
+    // this.getProductores();
+    // this.getBodegas();
+    // console.log(this.form);
+  }
+  seleccionar(select){
+    this.selects.forEach(select => {
+      select.select = false;
+    });
+    select.select = true;
+    this.onChanges();
+    console.log('activa');
+  }
+  setUva(uva){
+    this.form.uva = uva;
+    this.selects[0].value = true;
+    this.onChanges();
+  }
+  setBarrica(barrica){
+    this.form.tipo_bar = barrica;
+    this.onChanges();
+  }
+  setTostado(tostado){
+    this.form.tostado = tostado;
+    this.selects[1].value = true;
+    this.onChanges();
+  }
+  setBodega(bodega){
+
+    this.form.bodega_id= bodega.id;
+    this.bodega=bodega;
+    this.selects[2].value = true;
+    this.onChanges();
   }
   onChanges(){
-    this.form.valueChanges.subscribe(val=>{
-      let params = val;
-      this.storage.get('access_token').then(val => {
-        let token = JSON.parse(val);
-        this.sellProvider.myWineForm(params, token).subscribe(res => {
-          this.barricas = res.barricas.length;
-          console.log(this.barricas);
-        }, err => {
-          console.log(err);
-        })
+    this.storage.get('access_token').then(val => {
+      let token = JSON.parse(val);
+      this.sellProvider.myWineForm(this.form, token).subscribe(res => {
+        console.log(res);
+        this.uvas = res.uvas;
+        this.tipo_barrs = res.tipo_bars;
+        this.tostados = res.tostados;
+        this.bodegas = res.bodegas;
+      }, err => {
+        console.log(err);
       })
     })
   }
-  onSubmit(form:NgForm){
-    // console.log(form.value);
-    let params = form.value;
+  onSubmit(form){
+    console.log(form);
+    let params = form;
     this.storage.get('access_token').then(val => {
       let token = JSON.parse(val);
       this.sellProvider.myWineForm(params, token).subscribe(res => {
@@ -92,47 +118,53 @@ export class MyWineFormPage implements OnInit {
         console.log(err);
       })
     })
-    // if (form.valid) {
-    //   this.alert('Creado', 'Tú orden se ha hecho');
-    //   this.navCtrl.pop();
-    // } else {
+    if (form.valid) {
+      this.alert('Creado', 'Tú orden se ha hecho');
+      this.navCtrl.pop();
+    } else {
       
-    // }
+    }
   }
-  regresar(){
-    this.navCtrl.pop();
+  cancelar(){
+    this.form = { uva: '', bodega_id: '', tipo_bar: '', tostado: '' };
+    this.selects = [
+      { nombre: 'uva', value: false, select: false },
+      { nombre: 'barrica', value: false, select: false },
+      { nombre: 'bodega', value: false, select: false }
+    ];
+    this.bodega = [];
   }
-  getUvas(){
-    this.uvasProvider.getUvas().subscribe(res=>{
-      console.log(res.uvas);
-      this.uvas = res.uvas;
-    },error=>{
-      console.log(error);
-    });
-  }
+  // getUvas(){
+  //   this.uvasProvider.getUvas().subscribe(res=>{
+  //     console.log(res.uvas);
+  //     this.uvas = res.uvas;
+  //   },error=>{
+  //     console.log(error);
+  //   });
+  // }
   uvasDetail(){
     this.navCtrl.push(UvasPage);
     
   }
-  getProductores(){
-    this.productoresProvider.getProductores().subscribe(res=>{
-      this.productores = res.vinicolas;
-      console.log(this.productores);
+  // getProductores(){
+  //   this.productoresProvider.getProductores().subscribe(res=>{
+  //     this.productores = res.vinicolas;
+  //     console.log(this.productores);
       
-    })
-  }
-  productorDetail(productor){
-    console.log(productor);
-    this.navCtrl.push(ProductorPage,{productor:productor,usuario:this.usuario});
-  }
-  getBodegas(){
-    this.bodegaProvider.getBodegas().subscribe(res=>{
-      console.log(res);
-      this.bodegas = res.bodegas;
-    },err=>{
-      console.log(err)
-    });
-  }
+  //   })
+  // }
+  // productorDetail(productor){
+  //   console.log(productor);
+  //   this.navCtrl.push(ProductorPage,{productor:productor,usuario:this.usuario});
+  // }
+  // getBodegas(){
+  //   this.bodegaProvider.getBodegas().subscribe(res=>{
+  //     console.log(res);
+  //     this.bodegas = res.bodegas;
+  //   },err=>{
+  //     console.log(err)
+  //   });
+  // }
 
   
 

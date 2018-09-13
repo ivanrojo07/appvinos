@@ -2,4 +2,11 @@ page-my-wine-form {
   .bar-button{
     color: #fff;
   }
+  .toolbar-title {
+    white-space: pre-line;
+  }
+  ion-content ion-card ion-card-content ion-list button.item ion-label {
+    color: #000000 !important;
+  }
+
 }
