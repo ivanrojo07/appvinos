@@ -8,6 +8,7 @@ import { ProductoresProvider } from './productores/productores';
 import { UvasProvider } from './uvas/uvas';
 import { PuntosCorchosProvider } from './puntos-corchos/puntos-corchos';
 import { BarricaProvider } from './barrica/barrica';
+import { ShoppingCartProvider } from './shopping-cart/shopping-cart';
 
 export{
     UsuarioServiceProvider,
@@ -20,4 +21,5 @@ export{
     BarricaProvider,
     SellProvider,
     BodegaProvider,
+    ShoppingCartProvider
 };

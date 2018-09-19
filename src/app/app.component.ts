@@ -1,3 +1,4 @@
+import { TabsPage } from './../pages/tabs/tabs';
 import { Component, ViewChild } from '@angular/core';
 import { Config, Nav, Platform, MenuController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -40,7 +41,7 @@ export class MyApp {
 
   loggedInPages: PageInterface[]=[
 
-    { title: "Home", component: UserPage  },
+    { title: "Home", component: TabsPage },
     { title: "Puntos Corchos", component:PuntosPage},
     { title: "Ajustes", component: SettingPage},
     { title: "Acerca de nosotros", component: AboutPage },
@@ -88,7 +89,7 @@ export class MyApp {
         this.rootPage = HomePage;
         this.enableMenu(false);
       } else {
-        this.rootPage = UserPage;
+        this.rootPage = TabsPage;
 
         this._usuarioService.estaLogeado().then((hasLoggedIn)=>{
           this.enableMenu(hasLoggedIn == true);

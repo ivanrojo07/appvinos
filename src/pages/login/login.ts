@@ -1,3 +1,4 @@
+import { TabsPage } from './../tabs/tabs';
 import { OnInit, Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 // import { Params} from '@angular/router';
@@ -6,7 +7,6 @@ import { SignupPage } from '../signup/signup';
 import { UsuarioServiceProvider } from '../../providers/usuario-service/usuario-service';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
-import { UserPage } from '../user/user';
 
 
 /**
@@ -58,7 +58,7 @@ export class LoginPage implements OnInit{
         else{
           this.alert('Bienvenido', 'Sessión exitosa');
           this._usuarioService.logginData(result.access_token, result.refresh_token);
-          this.navCtrl.setRoot(UserPage);
+          this.navCtrl.setRoot(TabsPage);
           this.storage.get("access_token").then((val) => {
             // this.alert('TOKEN: ',val);
             console.log('Your access_token is ' + val);

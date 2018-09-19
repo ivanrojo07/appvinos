@@ -12,7 +12,6 @@ import 'rxjs/add/operator/map';
 export class SellProvider {
 
   public urlSearch:string;
-  public urlCar: string;
   constructor(public http: Http) {
     console.log('Hello SellProvider Provider');
     this.urlSearch = "http://byw.from-tn.com/pwm/api/mivino";

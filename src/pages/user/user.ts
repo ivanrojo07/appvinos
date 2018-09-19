@@ -16,35 +16,34 @@ import { ProductoPage } from '../producto/producto';
 
 @IonicPage()
 @Component({
-  selector: 'page-user',
-  templateUrl: 'user.html',
+  selector: "page-user",
+  templateUrl: "user.html",
   providers: [UsuarioServiceProvider, BarricaProvider]
 })
 export class UserPage implements OnInit {
-
   public usuario: Usuario;
   public access_token: string;
   public barricas: any[];
 
-  constructor(public navCtrl: NavController,
+  root = UserPage;
+
+  constructor(
+    public navCtrl: NavController,
     public navParams: NavParams,
     private _usuarioService: UsuarioServiceProvider,
     private barricaProvider: BarricaProvider,
-    private storage: Storage,
+    private storage: Storage
   ) {
     this.barricas = [];
-    this.usuario = new Usuario(null, '', '', '', '', '', '', '');
+    this.usuario = new Usuario(null, "", "", "", "", "", "", "");
   }
   ngOnInit() {
-   
-    this.storage.get("access_token").then((val) => {
+    this.storage.get("access_token").then(val => {
       // console.log("TOKEN: "+val);
       this.access_token = val;
       if (this.access_token == null || this.access_token == "") {
         // console.log(this.access_token);
-
-      }
-      else {
+      } else {
         // console.log(this.access_token);
         this._usuarioService.getUsuario(this.access_token).subscribe(result => {
           console.log(result.name);
@@ -58,30 +57,32 @@ export class UserPage implements OnInit {
           this.usuario.telefono = result.telefono;
           this.usuario.password = result.password;
           console.log("USUARIO" + JSON.stringify(this.usuario));
-          this.barricaProvider.getBarricas(this.access_token).subscribe(result=>{
-            console.log(result);
-            this.barricas = result['barricas'];
-            console.log(this.barricas);
-          },error=>{
-            console.log(error);
-          });
+          this.barricaProvider.getBarricas(this.access_token).subscribe(
+            result => {
+              console.log(result);
+              this.barricas = result["barricas"];
+              console.log(this.barricas);
+            },
+            error => {
+              console.log(error);
+            }
+          );
         });
       }
     });
-
   }
-  abrirForm(){
-    this.navCtrl.push(MyWineFormPage,{usuario:this.usuario});
-  }
-
-  openBarrica(barrica){
-    this.navCtrl.push(ProductoPage, { barrica: barrica, usuario:this.usuario });
+  abrirForm() {
+    this.navCtrl.push(MyWineFormPage, { usuario: this.usuario });
   }
 
-  
+  openBarrica(barrica) {
+    this.navCtrl.push(ProductoPage, {
+      barrica: barrica,
+      usuario: this.usuario
+    });
+  }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserPage');
+    console.log("ionViewDidLoad UserPage");
   }
-
 }

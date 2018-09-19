@@ -1,0 +1,12 @@
+<!--
+  Generated template for the TabsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- Icons below text -->
+<ion-tabs tabsHideOnSubPages=“true” tabsLayout="icon-top" no-navbar selectedIndex="0" color="uva">
+  <ion-tab tabTitle="Inicio" tabIcon="md-home" [root]="home"></ion-tab>
+  <ion-tab tabTitle="Mi Carrito" tabIcon="md-cart" tabBadge="{{inshoppingcart}}" tabBadgeStyle="success" [root]="shoppingcart"></ion-tab>
+  <ion-tab tabTitle="Mis Pedidos" tabIcon="card" tabBadge="{{ordenes}}" [root]="ordens"></ion-tab>
+</ion-tabs>

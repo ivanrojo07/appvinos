@@ -2,11 +2,11 @@ import { vinicola } from './../../models/vinicola';
 import { enologo } from './../../models/enologo';
 import { bodega } from './../../models/bodega';
 import { barrica } from './../../models/barrica';
-import { BarricaProvider } from './../../providers/barrica/barrica';
 import { Storage } from '@ionic/storage';
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { Usuario } from "../../models/usuario";
+import { ShoppingCartProvider, BarricaProvider } from '../../providers/providers';
 /**
  * Generated class for the ProductoPage page.
  *
@@ -18,6 +18,7 @@ import { Usuario } from "../../models/usuario";
 @Component({
   selector: 'page-producto',
   templateUrl: 'producto.html',
+  providers: [ShoppingCartProvider, BarricaProvider]
 })
 export class ProductoPage {
 
@@ -31,8 +32,10 @@ export class ProductoPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
     private storage: Storage,
     private barricaProvider: BarricaProvider,
+    private shoppingProvider: ShoppingCartProvider,
   ) {
     // this.barrica={};
     // this.bodega={};
@@ -101,6 +104,31 @@ export class ProductoPage {
       this.currentNumber--;
 
     }
+  }
+
+  addBarrica(barrica){
+    let loading = this.loadingCtrl.create({
+      spinner:'bubbles',
+      content:'Agregando barrica...'
+    });
+    loading.present();
+    this.storage.get('access_token').then(val=>{
+      let token = JSON.parse(val);
+      let id = barrica.id;
+      this.shoppingProvider.addProduct(id,this.currentNumber,token).subscribe(res=>{
+        loading.dismiss();
+        this.alertCtrl.create({
+          title:'Barrica agregada a tu carrito',
+          subTitle:'Accede a la pestaña "Mi Carrito" para continuar con tu compra',
+          buttons:['Cerrar']
+        }).present();
+       
+      },error=>{
+        loading.dismiss();
+        console.log(error);
+      });
+
+    })
   }
 
 }

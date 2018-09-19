@@ -1,3 +1,4 @@
+import { OrdensPage } from './../pages/ordens/ordens';
 import { ProductosPage } from './../pages/productos/productos';
 import { MapPage } from './../pages/map/map';
 import { SocialSharing } from "@ionic-native/social-sharing";
@@ -56,6 +57,9 @@ import { BarricaProvider } from '../providers/barrica/barrica';
 import { SellProvider } from '../providers/sell/sell';
 import { BodegaProvider } from '../providers/bodega/bodega';
 import { ProductoPage } from '../pages/producto/producto';
+import { ShoppingCartProvider } from '../providers/providers';
+import { TabsPage } from '../pages/tabs/tabs';
+import { ShoppingCartPage } from "../pages/shopping-cart/shopping-cart";
 
 @NgModule({
   declarations: [
@@ -90,6 +94,9 @@ import { ProductoPage } from '../pages/producto/producto';
     MapPage,
     ProductosPage,
     ProductoPage,
+    TabsPage,
+    ShoppingCartPage,
+    OrdensPage,
   ],
   imports: [
     BrowserModule,
@@ -132,6 +139,9 @@ import { ProductoPage } from '../pages/producto/producto';
     MapPage,
     ProductosPage,
     ProductoPage,
+    TabsPage,
+    ShoppingCartPage,
+    OrdensPage,
     
   ],
   providers: [
@@ -150,6 +160,7 @@ import { ProductoPage } from '../pages/producto/producto';
     BarricaProvider,
     SellProvider,
     BodegaProvider,
+    ShoppingCartProvider,
     
   ]
 })
