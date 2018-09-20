@@ -6,13 +6,95 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>ShoppingCartPage</ion-title>
+  <ion-navbar transparent>
+    <button ion-button menuToggle icon-only class="menu">
+      <ion-icon></ion-icon>
+    </button>
+    <ion-col text-left>
+      <ion-title>
+        {{ user?.name | titlecase }} {{ user?.appaterno | titlecase }} {{ user?.apmaterno | titlecase }}
+      </ion-title>
+    </ion-col>
+      <!-- <ion-icon></ion-icon> -->
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content full-padding>
+  <ion-card>
+    
+    <ion-card-content>
+      <h2>Resumen de tu pedido:</h2>
+      <ion-item *ngFor="let producto of myShoppingCart?.in_shopping_cart">
+        <ion-fab top right>
+          <button ion-fab mini color="transparent" (click)="eliminar(producto)">
+            <ion-icon name="close" color="danger"></ion-icon>
+          </button>
+        </ion-fab>
+        <ion-avatar item-start>
+          <img src="assets/img/boxwine.jpg">
+        </ion-avatar>
+        <h2>{{producto.uva}}</h2>
+        <p>Anada: {{producto.anada}}</p>
+        <p>Barrica: {{producto.tipo_bar}}</p>
+        <p>Tostado: {{producto.tostado}}</p>
+        <h2>Precio: {{producto.pivot.precio_unit}}</h2>
+        <h2>Cantidad: 
+          <button ion-button clear color="uva" icon-only (click)="removeQty(producto)">
+            <ion-icon name="remove-circle"></ion-icon>
+          </button>
+          <ion-col align-self-center style="top: 4px !important;">
+           {{producto.pivot.cantidad}}
+          </ion-col>
+          <button ion-button clear color="uva" icon-only (click)="addQty(producto)">
+          <ion-icon name="add-circle"></ion-icon>
+          </button>
+        </h2>
+      </ion-item>
 
+      <hr>
+      <ion-row>
+        <ion-col text-left>
+          Subtotal:
+        </ion-col>
+        <ion-col text-right>
+          <strong color="danger">$ {{myShoppingCart?.total | number : '1.2-2'}} USD</strong>
+        </ion-col>
+      </ion-row>
+      <hr>
+      <ion-row>
+        <ion-col text-left>
+          Envio:
+        </ion-col>
+        <ion-col text-right>
+          <strong color="danger">$ {{envio | number : '1.2-2'}} USD</strong>
+        </ion-col>
+      </ion-row>
+      <hr>
+      <button ion-button clear full (click)="formEnvio = !formEnvio">Calcular envio</button>
+      <ion-row *ngIf="formEnvio">
+        <ion-col text-left>
+          <ion-item>
+            <ion-input type="number" pattern="[0-9]{5}" #zip_code="ngModel" ngModel placeholder="C.P."></ion-input>
+          </ion-item>
+        </ion-col>
+      
+        <ion-col text-right>
+          <button ion-button small outline (click)="calcularEnvio(zip_code)" color="uva">Calcular</button>
+        </ion-col>
+      </ion-row>
+      <hr>
+      <ion-row>
+        <ion-col text-left>
+          <strong>TOTAL:</strong>
+        </ion-col>
+        <ion-col text-right>
+          <strong>$ {{ myShoppingCart?.total+envio | number : '1.2-2' }} USD</strong>
+        </ion-col>
+        <button ion-button block>Procesar Compra</button>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  
 </ion-content>

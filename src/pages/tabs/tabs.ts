@@ -61,8 +61,8 @@ export class TabsPage {
           this.inshoppingcart = this.myshoppingcart['in_shopping_cart'].length;
         }, err => {
           console.log(err);
-        })
-    })
+        });
+    });
   }
   listenEvents(){
     this.events.subscribe('shopping', (count) => {

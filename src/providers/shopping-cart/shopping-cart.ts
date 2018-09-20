@@ -57,6 +57,7 @@ export class ShoppingCartProvider {
       'Accept': "application/json",
       'Authorization': "Bearer " + token
     });
+    this.events.publish('shopping', ++this.count);
     return this.http.post(this.urlRemove,params,{headers:headers}).map(res=>res.json());
   }
 
