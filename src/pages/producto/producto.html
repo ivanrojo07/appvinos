@@ -38,18 +38,45 @@
       Descripción:
     </ion-card-header>
     <ion-card-content>
-      <p>{{vinicola?.tipo}} {{ vinicola?.nombre | titlecase }}</p>
-      <blockquote>
-        <q>
-          {{vinicola?.filosofia}}
-        </q>
-      </blockquote>
-      <p>Bodega: {{ bodega?.nombre| titlecase }}</p>
-      <blockquote>
-        <q>
-          {{bodega?.descripcion }}
-        </q>
-      </blockquote>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+            {{vinicola?.tipo}} {{ vinicola?.nombre | titlecase }}
+          </ion-col>
+          <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+            <button ion-button small color="uva" round (click)="verVinicola(vinicola)">Ver {{vinicola?.tipo}}</button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col >
+            <blockquote>
+              <q>
+                {{vinicola?.filosofia}}
+              </q>
+            </blockquote>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+            Bodega: {{ bodega?.nombre| titlecase }}
+          </ion-col>
+          <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+            <button ion-button small color="uva" round (click)="verBodega(bodega)">Ver Bodega</button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <blockquote>
+              <q>
+                {{bodega?.descripcion }}
+              </q>
+            </blockquote>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
 
   </ion-card>

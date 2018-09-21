@@ -25,7 +25,7 @@ export class TabsPage {
   public home: any;
   public shoppingcart: any;
   public ordens: any;
-  public myshoppingcart: any;
+  // public myshoppingcart: any;
   public inshoppingcart: number;
   public ordenes: number;
   
@@ -46,28 +46,32 @@ export class TabsPage {
   }
 
   ionViewDidLoad() {
-    this.getShoppingCart();
+    this.getInShoppingCart();
   console.log('ionViewDidLoad TabsPage');
   }
 
-  getShoppingCart(){
+  getInShoppingCart(){
     this.storage.get('access_token').then(val => {
       let token = JSON.parse(val);
-      this.shoppingProvider.getShoppingCarts(token).
-        subscribe(res => {
-          console.log(res);
-          this.myshoppingcart = res['myShoppingCart'];
-          this.ordenes = res['compras'].length;
-          this.inshoppingcart = this.myshoppingcart['in_shopping_cart'].length;
-        }, err => {
-          console.log(err);
-        });
+      this.shoppingProvider
+        .getCountInShoppingCart(token)
+        .subscribe(
+          res => {
+            console.log(res);
+            // this.myshoppingcart = res["myShoppingCart"];
+            this.ordenes = res["compras"];
+            this.inshoppingcart = res['in_shopping_cart'];
+          },
+          err => {
+            console.log(err);
+          }
+        );
     });
   }
   listenEvents(){
     this.events.subscribe('shopping', (count) => {
       console.log(count);
-      this.getShoppingCart();
+      this.getInShoppingCart();
     })
   }
 

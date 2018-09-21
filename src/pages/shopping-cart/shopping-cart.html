@@ -12,7 +12,7 @@
     </button>
     <ion-col text-left>
       <ion-title>
-        {{ user?.name | titlecase }} {{ user?.appaterno | titlecase }} {{ user?.apmaterno | titlecase }}
+        {{ user?.nombre | titlecase }} {{ user?.apaterno | titlecase }} {{ user?.amaterno | titlecase }}
       </ion-title>
     </ion-col>
       <!-- <ion-icon></ion-icon> -->
@@ -32,14 +32,16 @@
             <ion-icon name="close" color="danger"></ion-icon>
           </button>
         </ion-fab>
-        <ion-avatar item-start>
+        <ion-avatar item-start >
           <img src="assets/img/boxwine.jpg">
         </ion-avatar>
-        <h2>{{producto.uva}}</h2>
-        <p>Anada: {{producto.anada}}</p>
-        <p>Barrica: {{producto.tipo_bar}}</p>
-        <p>Tostado: {{producto.tostado}}</p>
-        <h2>Precio: {{producto.pivot.precio_unit}}</h2>
+        <ion-col (click)="openBarrica(producto)">
+          <h2>{{producto.uva}}</h2>
+          <p>Anada: {{producto.anada}}</p>
+          <p>Barrica: {{producto.tipo_bar}}</p>
+          <p>Tostado: {{producto.tostado}}</p>
+          <h2>Precio: {{producto.pivot.precio_unit}}</h2>
+        </ion-col>
         <h2>Cantidad: 
           <button ion-button clear color="uva" icon-only (click)="removeQty(producto)">
             <ion-icon name="remove-circle"></ion-icon>

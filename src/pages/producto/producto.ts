@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { Usuario } from "../../models/usuario";
 import { ShoppingCartProvider, BarricaProvider } from '../../providers/providers';
+import { ProductorPage } from "../productor/productor";
 /**
  * Generated class for the ProductoPage page.
  *
@@ -59,6 +60,14 @@ export class ProductoPage {
       }, err => { });
     });
     this.usuario = this.navParams.get("usuario");
+  }
+  verVinicola(vinicola){
+    console.log(vinicola);
+    this.navCtrl.push(ProductorPage, { productor: vinicola, usuario: this.usuario });
+  }
+  verBodega(bodega) {
+    console.log(bodega);
+    this.navCtrl.push(ProductorPage, { productor: bodega, usuario: this.usuario });
   }
 
   verProductor(vinicola) {
