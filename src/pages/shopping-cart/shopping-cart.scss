@@ -9,7 +9,9 @@ page-shopping-cart {
         background-size: cover;
         background-color: #fff;
         background-position-x: 50%;
-        
+        p{
+            white-space: pre-line;
+        }
     }
     .bar-buttons,
     .toolbar-title {

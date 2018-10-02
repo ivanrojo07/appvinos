@@ -36,13 +36,16 @@
           <img src="assets/img/boxwine.jpg">
         </ion-avatar>
         <ion-col (click)="openBarrica(producto)">
-          <h2>{{producto.uva}}</h2>
+          <h2>Uva: {{producto.uva}}</h2>
           <p>Anada: {{producto.anada}}</p>
           <p>Barrica: {{producto.tipo_bar}}</p>
           <p>Tostado: {{producto.tostado}}</p>
           <h2>Precio: {{producto.pivot.precio_unit}}</h2>
         </ion-col>
-        <h2>Cantidad: 
+        <h2>
+          <ion-col align-self-center style="top: 4px !important;">
+            Cantidad: 
+          </ion-col>
           <button ion-button clear color="uva" icon-only (click)="removeQty(producto)">
             <ion-icon name="remove-circle"></ion-icon>
           </button>
@@ -52,6 +55,9 @@
           <button ion-button clear color="uva" icon-only (click)="addQty(producto)">
           <ion-icon name="add-circle"></ion-icon>
           </button>
+          <ion-col align-self-center style="top: 4px !important;">
+            cajas
+          </ion-col>
         </h2>
       </ion-item>
 

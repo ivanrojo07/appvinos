@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Barrica</ion-title>
+    <ion-title>Información</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,7 +18,12 @@
   <ion-grid class="placa">
     <ion-row>
       <ion-col text-center>
-        Barrica {{barrica?.tipo_bar}} ° Uva {{barrica?.uva}}
+        Barrica: {{barrica?.tipo_bar}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        Uva: {{barrica?.uva}}
       </ion-col>
     </ion-row>
     <ion-row>
@@ -88,16 +93,23 @@
       </button>
       <ion-col align-self-center style="top: 4px !important;">
         {{currentNumber}}
-
       </ion-col>
       <button ion-button clear color="light" icon-only (click)="increment()">
         <ion-icon name="add-circle"></ion-icon>
       </button>
     </ion-label>
     <ion-label *ngIf="barrica?.precio_publico == 0" >
+      {{ currentNumber}} caja(s)
+      <br> 
+      ( {{ currentNumber*12 }} botellas)
+      <br>
       $ {{barrica?.precio_venta*currentNumber | number : '1.2-2'}} USD
     </ion-label>
     <ion-label *ngIf="barrica?.precio_publico != 0">
+      {{ currentNumber}} caja(s)
+      <br>
+      ({{ currentNumber*12 }} botellas)
+      <br>
       $ {{barrica?.precio_publico*currentNumber | number : '1.2-2'}} USD
     </ion-label>
     <!-- <ion-label item-end>{{barrica?.precio_venta}}</ion-label> -->
