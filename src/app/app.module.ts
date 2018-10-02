@@ -18,7 +18,6 @@ import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
 import { UserPage } from '../pages/user/user';
 
-import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 
@@ -145,7 +144,6 @@ import { ShoppingCartPage } from "../pages/shopping-cart/shopping-cart";
     
   ],
   providers: [
-    StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsuarioServiceProvider,
