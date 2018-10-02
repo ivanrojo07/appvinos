@@ -99,14 +99,14 @@
       </button>
     </ion-label>
     <ion-label *ngIf="barrica?.precio_publico == 0" >
-      {{ currentNumber}} caja(s)
+      {{ currentNumber }} caja(s)
       <br> 
-      ( {{ currentNumber*12 }} botellas)
+      ({{ currentNumber*12 }} botellas)
       <br>
       $ {{barrica?.precio_venta*currentNumber | number : '1.2-2'}} USD
     </ion-label>
     <ion-label *ngIf="barrica?.precio_publico != 0">
-      {{ currentNumber}} caja(s)
+      {{ currentNumber }} caja(s)
       <br>
       ({{ currentNumber*12 }} botellas)
       <br>

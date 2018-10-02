@@ -28,7 +28,7 @@ export class ProductoPage {
   public enologo: enologo;
   public vinicola: vinicola;
   public usuario: Usuario;
-  private currentNumber = 1;
+  public currentNumber = 1;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -69,37 +69,6 @@ export class ProductoPage {
     console.log(bodega);
     this.navCtrl.push(ProductorPage, { productor: bodega, usuario: this.usuario });
   }
-
-  verProductor(vinicola) {
-    let alert = this.alertCtrl.create({
-      title: `${vinicola.nombre}`,
-      message:
-      `<ion-card>
-    <ion-card-content>
-      <p>
-        <strong>${vinicola.tipo} : ${vinicola.nombre}</strong>  
-      </p>
-      <p>
-        <strong>Desde : ${vinicola.inicio}</strong> 
-      </p>
-      ${vinicola.distinciones != null ? '<p><strong> Distinciones : ' + vinicola.distinciones + '</strong></p>' : ''} 
-      <p>
-        <strong>Nuestra Filosofia : ${vinicola.filosofia}</strong> 
-      </p>
-      <p>
-        <strong>Locación : ${vinicola.locacion}</strong> 
-      </p>
-      <p><strong>Telefono : ${vinicola.telefono}</strong></p>
-      ${vinicola.enologo != null ? '<p><strong> Nuestro Enologo : ' + vinicola.enologo + '</strong></p>' : ''}
-      ${vinicola.wine_maker != null ? '<p><strong> Nuestro Wine Maker : ' + vinicola.wine_maker + '</strong></p>' : ''} 
-      
-    </ion-card-content>
-  </ion-card>`,
-      buttons: ['OK']
-    });
-    alert.present();
-  }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductosPage');
   }
@@ -118,7 +87,7 @@ export class ProductoPage {
   addBarrica(barrica){
     let loading = this.loadingCtrl.create({
       spinner:'bubbles',
-      content:'Agregando barrica...'
+      content:'Agregando caja...'
     });
     loading.present();
     this.storage.get('access_token').then(val=>{
@@ -127,7 +96,7 @@ export class ProductoPage {
       this.shoppingProvider.addProduct(id,this.currentNumber,token).subscribe(res=>{
         loading.dismiss();
         this.alertCtrl.create({
-          title:'Barrica agregada a tu carrito',
+          title:'Caja agregada a tu carrito',
           subTitle:'Accede a la pestaña "Mi Carrito" para continuar con tu compra',
           buttons:['Cerrar']
         }).present();
