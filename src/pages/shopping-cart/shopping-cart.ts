@@ -35,7 +35,7 @@ export class ShoppingCartPage {
     this.myShoppingCart = {};
     this.user = new Usuario(null, "", "", "", "", "", "", "");
     this.zip_code = 0;
-    this.envio = 0.0;
+    this.envio = 10.0;
   }
 
   ionViewDidLoad() {

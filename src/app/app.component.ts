@@ -40,7 +40,7 @@ export class MyApp {
 
   loggedInPages: PageInterface[]=[
 
-    { title: "Home", component: TabsPage },
+    { title: "Inicio", component: TabsPage },
     { title: "Puntos Corchos", component:PuntosPage},
     { title: "Ajustes", component: SettingPage},
     { title: "Acerca de nosotros", component: AboutPage },
@@ -49,22 +49,22 @@ export class MyApp {
     { title: "Productores", component: ProductoresPage},
     { title: "Tutorial", component: TutorialPage},
     { title: "Sobre las Uvas", component: UvasPage},
-    { title: "Sobre las barrica", component: BarricasPage },
-    { title: "Aviso de privacidad", component: PrivacidadPage},
+    { title: "Sobre las Barricas", component: BarricasPage },
+    { title: "Aviso de Privacidad", component: PrivacidadPage},
   ];
 
   loggedOutPages: PageInterface[]=[
-    { title: "Home", component: HomePage },
+    { title: "Inicio", component: HomePage },
     { title: "Registrate", component: SignupPage},
     { title: "Inicia Sesión", component: LoginPage},
     { title: "¿Quiénes somos?", component: AboutPage },
     // { title: "Notificaciones", component: NotificacionesPage },
-    { title: "Terminos legales", component: DisclaimerPage },
+    { title: "Terminos Legales", component: DisclaimerPage },
     { title: "Productores", component: ProductoresPage },
     { title: "¿Cómo Funciona?", component: TutorialPage },
     { title: "Acerca de las Uvas", component: UvasPage },
-    { title: "Sobre las barrica", component: BarricasPage },
-    { title: "Aviso de privacidad", component: PrivacidadPage }
+    { title: "Sobre las Barrica", component: BarricasPage },
+    { title: "Aviso de Privacidad", component: PrivacidadPage }
   ];
 
   rootPage: any;
